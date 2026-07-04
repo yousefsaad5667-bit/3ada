@@ -1,0 +1,42 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button class="btn btn-primary" (click)="openAddDialog()">إضافة سجل</button>
+    <h1 class="page-title">سجلات الانتكاسة</h1>
+  </div>
+
+  <div class="page-content">
+    @if (isEmpty()) {
+      <app-record-empty-state mode="empty" (addRecord)="openAddDialog()"> </app-record-empty-state>
+    }
+
+    @if (!isEmpty()) {
+      <div>
+        <app-record-filter-bar
+          [searchQuery]="_searchQuery()"
+          [datePreset]="_datePreset()"
+          (searchChange)="updateSearch($event)"
+          (datePresetChange)="updateDatePreset($event)"
+          (clearFilters)="clearFilters()"
+        >
+        </app-record-filter-bar>
+
+        @if (noMatch()) {
+          <app-record-empty-state mode="no-match"> </app-record-empty-state>
+        }
+
+        @if (!noMatch()) {
+          <app-record-table
+            [records]="filteredRecords()"
+            [sortField]="_sortField()"
+            [sortDir]="_sortDir()"
+            (sortChange)="updateSort($event)"
+            (editRecord)="openEditDialog($event)"
+            (deleteRecord)="deleteRecord($event)"
+            (duplicateRecord)="openDuplicateDialog($event)"
+          >
+          </app-record-table>
+        }
+      </div>
+    }
+  </div>
+</div>

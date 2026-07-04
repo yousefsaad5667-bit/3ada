@@ -1,0 +1,10 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-settings',
+  imports: [],
+  templateUrl: './settings.component.html',
+  styleUrl: './settings.component.scss',
+})
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
+export class SettingsComponent {}

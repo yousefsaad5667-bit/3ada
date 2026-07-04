@@ -1,0 +1,13 @@
+<div class="empty-state" [ngClass]="mode">
+  @if (mode === 'empty') {
+    <div class="icon">📝</div>
+    <h3>لا توجد سجلات حتى الآن</h3>
+    <p>ابدأ بتسجيل أول انتكاسة لك لتتبع تقدمك.</p>
+    <button class="btn btn-primary" (click)="addRecord.emit()">إضافة سجل</button>
+  }
+  @if (mode === 'no-match') {
+    <div class="icon">🔍</div>
+    <h3>لا توجد نتائج تطابق البحث</h3>
+    <p>حاول استخدام كلمات مفتاحية مختلفة أو تغيير فلتر التاريخ.</p>
+  }
+</div>

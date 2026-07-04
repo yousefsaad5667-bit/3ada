@@ -1,0 +1,103 @@
+<div class="table-container">
+  <table class="record-table" aria-label="جدول الانتكاسات">
+    <thead>
+      <tr>
+        <th
+          (click)="toggleSort('date')"
+          class="sortable"
+          tabindex="0"
+          role="button"
+          aria-label="فرز حسب التاريخ"
+        >
+          التاريخ
+          @if (sortField === 'date') {
+            <span class="sort-icon" aria-hidden="true">
+              {{ sortDir === 'asc' ? '↑' : '↓' }}
+            </span>
+          }
+        </th>
+        <th>الوقت</th>
+        <th
+          (click)="toggleSort('count')"
+          class="sortable"
+          tabindex="0"
+          role="button"
+          aria-label="فرز حسب العدد"
+        >
+          العدد
+          @if (sortField === 'count') {
+            <span class="sort-icon" aria-hidden="true">
+              {{ sortDir === 'asc' ? '↑' : '↓' }}
+            </span>
+          }
+        </th>
+        <th>مستوى الرغبة</th>
+        <th>السبب</th>
+        <th>الإجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (record of records; track record.id) {
+        <tr [class.highlight-delete]="pendingDeleteId() === record.id">
+          <td>{{ record.date }}</td>
+          <td dir="ltr" class="text-right">
+            {{
+              record.time
+                ? record.time + ' ' + (record.ampm === 'am' ? 'ص' : record.ampm === 'pm' ? 'م' : '')
+                : '-'
+            }}
+          </td>
+          <td>{{ record.count }}</td>
+          <td>{{ record.urgeLevel ?? '-' }}</td>
+          <td class="truncate-cell" [title]="record.reason ?? ''">{{ record.reason || '-' }}</td>
+          <td class="actions-cell">
+            @if (pendingDeleteId() !== record.id) {
+              <button
+                class="action-btn edit"
+                (click)="editRecord.emit(record.id)"
+                aria-label="تعديل السجل"
+                title="تعديل"
+              >
+                تعديل
+              </button>
+              <button
+                class="action-btn duplicate"
+                (click)="duplicateRecord.emit(record.id)"
+                aria-label="تكرار السجل"
+                title="تكرار"
+              >
+                تكرار
+              </button>
+              <button
+                class="action-btn delete"
+                (click)="initiateDelete(record.id)"
+                aria-label="حذف السجل"
+                title="حذف"
+              >
+                حذف
+              </button>
+            }
+            @if (pendingDeleteId() === record.id) {
+              <span class="confirm-text">تأكيد الحذف:</span>
+              <button
+                class="action-btn delete"
+                (click)="confirmDelete(record.id)"
+                aria-label="تأكيد الحذف"
+              >
+                تأكيد
+              </button>
+              <button class="action-btn" (click)="cancelDelete()" aria-label="إلغاء الحذف">
+                إلغاء
+              </button>
+            }
+          </td>
+        </tr>
+      }
+      @if (records.length === 0) {
+        <tr>
+          <td colspan="6" class="empty-cell">لا توجد سجلات.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

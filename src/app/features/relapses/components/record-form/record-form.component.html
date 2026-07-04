@@ -1,0 +1,117 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2 class="dialog-title">{{ mode === 'edit' ? 'تعديل سجل' : 'إضافة سجل' }}</h2>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="dialog-content">
+    <div class="form-group">
+      <label for="date">التاريخ <span class="required">*</span></label>
+      <input
+        id="date"
+        type="date"
+        formControlName="date"
+        [class.is-invalid]="validationErrors()['date']"
+      />
+      @if (validationErrors()['date']) {
+        <div class="error-text">{{ validationErrors()['date'] }}</div>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group half-width">
+        <label for="time">الوقت</label>
+        <input
+          id="time"
+          type="time"
+          formControlName="time"
+          [class.is-invalid]="validationErrors()['time']"
+        />
+        @if (validationErrors()['time']) {
+          <div class="error-text">{{ validationErrors()['time'] }}</div>
+        }
+      </div>
+      <div class="form-group half-width">
+        <label for="ampm">صباحاً/مساءً</label>
+        <select id="ampm" formControlName="ampm" [class.is-invalid]="validationErrors()['ampm']">
+          <option value="">--</option>
+          <option value="am">صباحاً</option>
+          <option value="pm">مساءً</option>
+        </select>
+        @if (validationErrors()['ampm']) {
+          <div class="error-text">{{ validationErrors()['ampm'] }}</div>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group half-width">
+        <label for="count">العدد <span class="required">*</span></label>
+        <input
+          id="count"
+          type="number"
+          formControlName="count"
+          min="1"
+          [class.is-invalid]="validationErrors()['count']"
+        />
+        @if (validationErrors()['count']) {
+          <div class="error-text">{{ validationErrors()['count'] }}</div>
+        }
+      </div>
+      <div class="form-group half-width">
+        <label for="urgeLevel">مستوى الرغبة (1-10)</label>
+        <input
+          id="urgeLevel"
+          type="number"
+          formControlName="urgeLevel"
+          min="1"
+          max="10"
+          [class.is-invalid]="validationErrors()['urgeLevel']"
+        />
+        @if (validationErrors()['urgeLevel']) {
+          <div class="error-text">{{ validationErrors()['urgeLevel'] }}</div>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="reason">السبب</label>
+      <textarea
+        id="reason"
+        formControlName="reason"
+        rows="2"
+        maxlength="500"
+        placeholder="ما الذي أدى إلى الانتكاسة؟"
+        [class.is-invalid]="validationErrors()['reason']"
+      ></textarea>
+      <div class="char-counter" [class.near-limit]="(form.value.reason?.length ?? 0) > 450">
+        {{ form.value.reason?.length ?? 0 }} / 500
+      </div>
+      @if (validationErrors()['reason']) {
+        <div class="error-text">{{ validationErrors()['reason'] }}</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="notes">ملاحظات</label>
+      <textarea
+        id="notes"
+        formControlName="notes"
+        rows="3"
+        maxlength="1000"
+        placeholder="ملاحظات إضافية..."
+        [class.is-invalid]="validationErrors()['notes']"
+      ></textarea>
+      <div class="char-counter" [class.near-limit]="(form.value.notes?.length ?? 0) > 900">
+        {{ form.value.notes?.length ?? 0 }} / 1000
+      </div>
+      @if (validationErrors()['notes']) {
+        <div class="error-text">{{ validationErrors()['notes'] }}</div>
+      }
+    </div>
+
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">إلغاء</button>
+      <button type="submit" class="btn btn-primary">حفظ</button>
+    </div>
+  </form>
+</div>

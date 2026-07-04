@@ -1,0 +1,27 @@
+.daily-series-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+
+  .toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border-color, #e2e8f0);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--text-muted, #64748b);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--bg-hover, #f8fafc);
+      color: var(--text-color, #334155);
+    }
+  }
+}

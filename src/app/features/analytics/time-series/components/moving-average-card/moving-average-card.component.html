@@ -1,0 +1,12 @@
+<div class="moving-average-content">
+  @if (!hasEnoughData()) {
+    <div class="empty-state">
+      <p>بيانات غير كافية لحساب المتوسط المتحرك (تحتاج ٧ أيام على الأقل)</p>
+    </div>
+  } @else {
+    <app-time-series-chart 
+      [dataset]="dataset()" 
+      [type]="'line'">
+    </app-time-series-chart>
+  }
+</div>

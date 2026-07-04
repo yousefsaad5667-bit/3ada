@@ -1,50 +1,149 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 1.0.0 -> 1.1.0
+- Modified principles:
+  - I. Angular Platform: expanded with full tech stack requirements
+  - II. Local-First Data Storage: expanded with explicit forbidden dependencies
+  - III. Arabic Language & RTL Layout: expanded with full requirements list
+  - IV. Modern UI & UX: expanded with full requirements list
+  - V. Performance & Scalability: expanded with specific targets
+- Added sections: Charting Library, Architecture, Code Quality, Deliverable Expectations
+- Removed sections: None
+- Templates requiring updates:
+  - .specify/templates/plan-template.md (⚠ pending)
+  - .specify/templates/spec-template.md (⚠ pending)
+  - .specify/templates/tasks-template.md (⚠ pending)
+- Follow-up TODOs: None
+-->
+
+# Habit Tracker Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Angular Platform (NON-NEGOTIABLE)
+The application MUST be developed **entirely with Angular** (latest stable version).
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+**Required tech stack:**
+- Angular (latest stable)
+- TypeScript
+- Angular Signals where appropriate
+- Standalone Components
+- Reactive Forms
+- Angular Router
+- RxJS only when necessary
+- SCSS for styling
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**Absolutely forbidden:**
+- No backend
+- No server-side rendering
+- No authentication
+- No cloud services
+- No APIs
+- No database
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+Everything MUST run completely in the browser.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### II. 100% Local-First Data Storage (NON-NEGOTIABLE)
+The application is **100% local-first**. All data MUST be stored inside **LocalStorage**.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**The project MUST NEVER depend on:**
+- Backend
+- Firebase
+- Supabase
+- MongoDB
+- SQL
+- IndexedDB (unless explicitly requested later)
+- REST APIs
+- GraphQL
+- Authentication
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+Every feature MUST work completely offline.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### III. Arabic Language & RTL Layout (NON-NEGOTIABLE)
+The application targets **Arabic-speaking users**.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+**Requirements:**
+- Entire UI MUST be in **Arabic**
+- Full **RTL (Right-to-Left)** layout
+- Proper Arabic typography
+- Responsive RTL spacing
+- RTL-friendly icons and navigation
+- Date and time formatting suitable for Arabic users
+- All charts, tooltips, legends, and labels MUST support Arabic text correctly
+
+### IV. Modern UI & UX
+The application MUST provide a modern, clean dashboard experience.
+
+**Requirements:**
+- Responsive Design (mobile-first)
+- Dark Mode & Light Mode
+- Accessible UI
+- Smooth animations
+- Loading states
+- Empty states
+- Error states
+- Reusable components
+
+### V. Performance & Scalability
+The application MUST remain responsive with large datasets.
+
+**Targets:**
+- Support at least **100,000 relapse records**
+- Fast filtering
+- Fast aggregation
+- Efficient chart rendering
+- Minimal unnecessary Angular change detection
+
+## Charting Library
+Choose the **most suitable Angular-compatible chart library** for each visualization rather than forcing a single library for every use case.
+
+**Selection criteria (in priority order):**
+1. Excellent Angular integration
+2. High performance
+3. Responsive charts
+4. Dark mode support
+5. RTL compatibility
+6. Good customization
+7. Active maintenance
+8. Minimal bundle size
+
+## Architecture
+The project MUST follow a **scalable feature-based architecture**.
+
+**Requirements:**
+- Feature-based folder structure
+- Separation of concerns
+- Reusable services
+- Reusable components
+- Reusable analytics engine
+- Strong typing
+- SOLID principles
+- Clean code
+- Easily extensible for future features
+
+## Code Quality
+Every phase MUST include:
+- Strict TypeScript typing
+- Interfaces & Models
+- Reusable utilities
+- Proper error handling
+- No duplicated logic
+
+## Deliverable Expectations
+Each implementation phase MUST deliver:
+- Folder structure
+- Components
+- Services
+- Interfaces & Models
+- Business logic
+- State management (if needed)
+- Styling
+- Validation
+- Clear separation between UI and business logic
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This Constitution supersedes all other documentation and practices.
+Amendments require explicit user approval and MUST be reflected in this file with a version bump.
+All implementation plans and reviews MUST verify compliance with these principles.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.1.0 | **Ratified**: 2026-07-03 | **Last Amended**: 2026-07-03

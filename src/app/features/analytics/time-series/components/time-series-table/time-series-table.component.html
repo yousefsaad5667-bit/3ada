@@ -1,0 +1,58 @@
+<div class="table-container">
+  <div class="table-header-actions">
+    <h3>تفاصيل البيانات</h3>
+  </div>
+
+  @if (totalRows() === 0) {
+    <div class="empty-state">
+      <p>لا توجد بيانات متاحة لهذه الفترة.</p>
+    </div>
+  } @else {
+    <div class="table-scroll-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>التاريخ</th>
+            <th class="number-col">العدد</th>
+            <th class="number-col">التغير عن السابق</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of paginatedRows(); track row.id) {
+            <tr>
+              <td>
+                {{ row.dateLabel }}
+                @if (row.isPartial) {
+                  <span class="partial-badge" title="فترة غير مكتملة">*</span>
+                }
+              </td>
+              <td class="number-col font-bold">{{ row.count }}</td>
+              <td class="number-col change-cell" [ngClass]="getChangeClass(row.changeFromPrevious)">
+                <span class="icon">{{ getChangeIcon(row.changeFromPrevious) }}</span>
+                <span class="val" dir="ltr">
+                  {{ row.changeFromPrevious !== null ? (row.changeFromPrevious > 0 ? '+' : '') + row.changeFromPrevious : '-' }}
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (totalPages() > 1) {
+      <div class="pagination">
+        <button 
+          [disabled]="page() === 0" 
+          (click)="setPage(page() - 1)">
+          السابق
+        </button>
+        <span class="page-info">صفحة {{ page() + 1 }} من {{ totalPages() }}</span>
+        <button 
+          [disabled]="page() === totalPages() - 1" 
+          (click)="setPage(page() + 1)">
+          التالي
+        </button>
+      </div>
+    }
+  }
+</div>

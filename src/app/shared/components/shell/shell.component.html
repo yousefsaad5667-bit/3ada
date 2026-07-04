@@ -1,0 +1,17 @@
+<div class="shell-container">
+  <app-storage-warning></app-storage-warning>
+  <app-header (sidebarToggle)="toggleSidebar()"></app-header>
+
+  <div class="main-layout">
+    <app-sidebar [isOpen]="isSidebarOpen()" [routes]="navigation"></app-sidebar>
+
+    <!-- Overlay for mobile sidebar -->
+    @if (isSidebarOpen()) {
+      <div class="sidebar-overlay" (click)="closeSidebar()" aria-hidden="true"></div>
+    }
+
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

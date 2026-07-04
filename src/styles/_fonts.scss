@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/cairo-regular.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/assets/fonts/cairo-semibold.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/cairo-bold.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F;
+}

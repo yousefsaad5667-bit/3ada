@@ -1,0 +1,48 @@
+<div class="trend-content">
+  @if (invalidRecordCount() > 0) {
+    <div class="invalid-notice" title="تم استبعاد بيانات غير صالحة من التحليل">
+      ⚠️ تم استبعاد {{ invalidRecordCount() }} سجل غير صالح.
+    </div>
+  }
+
+  @if (trend().direction === 'insufficient-data') {
+    <div class="empty-state">
+      <div class="icon">{{ trendIcon() }}</div>
+      <p>{{ trend().messageAr }}</p>
+      <span class="hint">تحتاج لفترة أطول لتحليل الاتجاه بدقة (يفضل ١٤ يوماً)</span>
+    </div>
+  } @else {
+    <div class="trend-header">
+      <div class="main-trend" [ngClass]="trend().direction">
+        <span class="icon">{{ trendIcon() }}</span>
+        <span class="message">{{ trend().messageAr }}</span>
+        @if (trend().growthRatePercent !== null) {
+          <span class="rate" dir="ltr">{{ trend().growthRatePercent }}%</span>
+        }
+      </div>
+      <div class="confidence-badge" [ngClass]="trend().confidence">
+        دقة: 
+        @switch (trend().confidence) {
+          @case ('high') { عالية }
+          @case ('medium') { متوسطة }
+          @case ('low') { منخفضة }
+        }
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-label">متوسط الانتكاس اليومي</span>
+        <span class="stat-value">{{ trend().averageDailyCount }}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">بداية الفترة</span>
+        <span class="stat-value">{{ trend().comparisonStartCount }}</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">نهاية الفترة</span>
+        <span class="stat-value">{{ trend().comparisonEndCount }}</span>
+      </div>
+    </div>
+  }
+</div>

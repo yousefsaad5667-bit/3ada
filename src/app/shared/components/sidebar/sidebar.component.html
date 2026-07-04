@@ -1,0 +1,23 @@
+<aside class="sidebar" [class.is-open]="isOpen">
+  <nav class="nav-list">
+    @for (route of groupedRoutes().main; track route.path) {
+      <a
+        [routerLink]="route.path"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: route.path === '/' }"
+        class="nav-item"
+      >
+        <span>{{ route.label }}</span>
+      </a>
+    }
+
+    <div class="nav-group">
+      <div class="nav-group-label">التحليلات</div>
+      @for (route of groupedRoutes().analytics; track route.path) {
+        <a [routerLink]="route.path" routerLinkActive="is-active" class="nav-item">
+          <span>{{ route.label }}</span>
+        </a>
+      }
+    </div>
+  </nav>
+</aside>

@@ -518,7 +518,7 @@ Implement reusable visualization components.
 
 ## Specifications
 
-Create reusable wrappers around the chart library.
+Create reusable Angular wrapper components around the most suitable chart library for each visualization type (e.g., time-series, heatmap, calendar,). Select the library based on the visualization's capabilities and performance rather than using a single library for all charts. The wrappers must expose a consistent API so the rest of the application remains independent of the underlying chart library.
 
 Supported Charts
 

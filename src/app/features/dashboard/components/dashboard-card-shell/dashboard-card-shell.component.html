@@ -1,0 +1,37 @@
+<div class="card-shell">
+  <div class="card-header cdk-drag-handle">
+    <h3 class="card-title">{{ titleAr }}</h3>
+    <button class="hide-btn" (click)="onHide()" aria-label="إخفاء البطاقة" title="إخفاء">
+      <span class="icon">×</span>
+    </button>
+  </div>
+
+  <div class="card-body">
+    <!-- Loading State -->
+    @if (state() === 'loading') {
+      <div class="state-container loading">
+        <div class="spinner"></div>
+      </div>
+    }
+
+    <!-- Empty State -->
+    @if (state() === 'empty') {
+      <div class="state-container empty">
+        <p>لا توجد بيانات متاحة في هذه الفترة</p>
+      </div>
+    }
+
+    <!-- Error State -->
+    @if (state() === 'error') {
+      <div class="state-container error">
+        <p>حدث خطأ أثناء تحميل البيانات</p>
+        <button class="retry-btn" (click)="onRetry()">إعادة المحاولة</button>
+      </div>
+    }
+
+    <!-- Data State (Projected Content) -->
+    <div class="state-container data" [class.hidden]="state() !== 'data'">
+      <ng-container #container></ng-container>
+    </div>
+  </div>
+</div>

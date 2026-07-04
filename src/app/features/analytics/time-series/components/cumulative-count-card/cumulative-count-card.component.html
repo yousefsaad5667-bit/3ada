@@ -1,0 +1,13 @@
+<div class="cumulative-content">
+  <div class="summary-header">
+    <span class="label">إجمالي الانتكاسات</span>
+    <span class="value">{{ finalCount() }}</span>
+  </div>
+  
+  <div class="chart-wrapper">
+    <app-time-series-chart 
+      [dataset]="dataset()" 
+      [type]="'line'">
+    </app-time-series-chart>
+  </div>
+</div>

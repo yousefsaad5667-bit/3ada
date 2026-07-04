@@ -1,0 +1,32 @@
+<div class="period-series-content">
+  <div class="header-actions">
+    <div class="toggle-group">
+      <button 
+        class="toggle-btn" 
+        [class.active]="selectedGrouping() === 'weekly'"
+        (click)="setGrouping('weekly')">
+        أسبوعي
+      </button>
+      <button 
+        class="toggle-btn" 
+        [class.active]="selectedGrouping() === 'monthly'"
+        (click)="setGrouping('monthly')">
+        شهري
+      </button>
+    </div>
+    <button class="table-toggle-btn" (click)="toggleTable()">
+      {{ showTable() ? 'إخفاء الجدول' : 'عرض الجدول' }}
+    </button>
+  </div>
+  
+  <div class="chart-wrapper">
+    @if (showTable()) {
+      <app-time-series-table [dataset]="dataset()"></app-time-series-table>
+    } @else {
+      <app-time-series-chart 
+        [dataset]="dataset()" 
+        [type]="'bar'">
+      </app-time-series-chart>
+    }
+  </div>
+</div>

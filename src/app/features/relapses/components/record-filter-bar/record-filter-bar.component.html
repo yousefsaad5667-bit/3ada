@@ -1,0 +1,33 @@
+<div class="filter-bar">
+  <div class="search-container">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input
+      type="text"
+      [value]="searchQuery"
+      (input)="onSearchInput($event)"
+      placeholder="ابحث في السبب أو الملاحظات..."
+      class="search-input"
+      aria-label="ابحث في السبب أو الملاحظات"
+    />
+  </div>
+
+  <div class="presets-container" role="group" aria-label="فلاتر التاريخ">
+    @for (preset of presets; track preset.value) {
+      <button
+        class="preset-chip"
+        [class.active]="datePreset === preset.value"
+        (click)="datePresetChange.emit(preset.value)"
+        [attr.aria-pressed]="datePreset === preset.value"
+        [attr.aria-label]="preset.label"
+      >
+        {{ preset.label }}
+      </button>
+    }
+  </div>
+
+  @if (searchQuery !== '' || datePreset !== 'all') {
+    <button class="clear-btn" (click)="clearFilters.emit()" aria-label="مسح الفلاتر">
+      مسح الفلاتر
+    </button>
+  }
+</div>

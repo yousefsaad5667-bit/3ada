@@ -1,0 +1,9 @@
+<div class="chart-container" [class.empty]="!dataset().periods.length">
+  @if (!dataset().periods.length) {
+    <div class="empty-state">
+      <p>لا توجد بيانات متاحة في هذه الفترة</p>
+    </div>
+  } @else {
+    <canvas #chartCanvas></canvas>
+  }
+</div>

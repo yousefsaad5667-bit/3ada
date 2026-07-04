@@ -1,0 +1,42 @@
+<div class="analytics-page">
+  <header class="page-header">
+    <div class="title-section">
+      <h1>تحليل الانتكاسات</h1>
+      <p>نظرة تفصيلية على نمط الانتكاسات عبر الزمن</p>
+    </div>
+    <div class="controls-section">
+      <app-date-range-selector></app-date-range-selector>
+    </div>
+  </header>
+
+  <div class="analytics-grid">
+    <div class="grid-col main-col">
+      <div class="card-wrapper">
+        <h2 class="card-title">الانتكاسات اليومية</h2>
+        <app-daily-series-card></app-daily-series-card>
+      </div>
+      
+      <div class="card-wrapper">
+        <h2 class="card-title">الانتكاسات الأسبوعية / الشهرية</h2>
+        <app-period-series-card></app-period-series-card>
+      </div>
+
+      <div class="card-wrapper">
+        <h2 class="card-title">الاتجاه التراكمي</h2>
+        <app-cumulative-count-card></app-cumulative-count-card>
+      </div>
+    </div>
+
+    <div class="grid-col side-col">
+      <div class="card-wrapper">
+        <h2 class="card-title">ملخص الاتجاه</h2>
+        <app-trend-summary-card></app-trend-summary-card>
+      </div>
+
+      <div class="card-wrapper">
+        <h2 class="card-title">المتوسط المتحرك</h2>
+        <app-moving-average-card></app-moving-average-card>
+      </div>
+    </div>
+  </div>
+</div>

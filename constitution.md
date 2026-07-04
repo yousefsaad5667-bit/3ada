@@ -1,3 +1,4 @@
+
 ## Platform
 
 The application must be developed **entirely with Angular**.

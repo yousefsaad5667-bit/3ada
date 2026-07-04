@@ -1,0 +1,16 @@
+<div class="daily-series-content">
+  <div class="actions">
+    <button class="toggle-btn" (click)="toggleTable()">
+      {{ showTable() ? 'إخفاء الجدول' : 'عرض الجدول' }}
+    </button>
+  </div>
+
+  @if (showTable()) {
+    <app-time-series-table [dataset]="dataset()"></app-time-series-table>
+  } @else {
+    <app-time-series-chart 
+      [dataset]="dataset()" 
+      [type]="'bar'">
+    </app-time-series-chart>
+  }
+</div>
