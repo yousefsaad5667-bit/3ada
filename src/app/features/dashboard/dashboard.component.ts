@@ -13,6 +13,9 @@ import { PeriodSeriesCardComponent } from '../analytics/time-series/components/p
 import { MovingAverageCardComponent } from '../analytics/time-series/components/moving-average-card/moving-average-card.component';
 import { CumulativeCountCardComponent } from '../analytics/time-series/components/cumulative-count-card/cumulative-count-card.component';
 import { TrendSummaryCardComponent } from '../analytics/time-series/components/trend-summary-card/trend-summary-card.component';
+import { HeatmapComponent } from '../analytics/calendar/components/heatmap/heatmap.component';
+import { MonthlyCalendarComponent } from '../analytics/calendar/components/monthly-calendar/monthly-calendar.component';
+import { DaySummaryCardComponent } from '../analytics/calendar/components/day-summary-card/day-summary-card.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -54,6 +57,24 @@ export class DashboardComponent implements OnInit {
       titleAr: 'المتوسط المتحرك',
       component: MovingAverageCardComponent,
       defaultOrder: 4
+    },
+    {
+      id: 'calendar-heatmap',
+      titleAr: 'خريطة النشاط السنوي',
+      component: HeatmapComponent,
+      defaultOrder: 5
+    },
+    {
+      id: 'calendar-monthly',
+      titleAr: 'التقويم الشهري',
+      component: MonthlyCalendarComponent,
+      defaultOrder: 6
+    },
+    {
+      id: 'calendar-day-summary',
+      titleAr: 'ملخص اليوم',
+      component: DaySummaryCardComponent,
+      defaultOrder: 7
     }
   ];
 

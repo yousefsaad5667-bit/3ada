@@ -1,0 +1,46 @@
+@if (cardState() === 'empty' || !grid() || grid().weeks.length === 0) {
+  <div class="empty-state">
+    {{ emptyMessageAr }}
+  </div>
+} @else {
+  <div class="heatmap-container" dir="rtl">
+    <div class="months-header">
+      @for (label of grid().monthLabels; track label.monthIndex) {
+        <span class="month-label" [style.grid-column]="label.weekIndex + 1">
+          {{ label.labelAr }}
+        </span>
+      }
+    </div>
+    
+    <div class="grid-wrapper">
+      <div class="weekdays-labels">
+        <span>الأحد</span>
+        <span>الإثنين</span>
+        <span>الثلاثاء</span>
+        <span>الأربعاء</span>
+        <span>الخميس</span>
+        <span>الجمعة</span>
+        <span>السبت</span>
+      </div>
+      
+      <div class="heatmap-grid" [style.grid-template-columns]="'repeat(' + grid().weeks.length + ', 1fr)'">
+        @for (week of grid().weeks; track week.weekIndex) {
+          <div class="heatmap-column">
+            @for (day of week.days; track day.date) {
+              <div 
+                class="heatmap-cell intensity-{{ day.intensity }}"
+                [class.inactive]="!day.isInActiveRange"
+                [class.today]="day.isToday"
+                [attr.title]="getTooltip(day)"
+                [attr.tabindex]="day.isInActiveRange ? 0 : -1"
+                role="button"
+                (click)="onDayClick(day)"
+                (keydown)="onKeyDown($event, day)">
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

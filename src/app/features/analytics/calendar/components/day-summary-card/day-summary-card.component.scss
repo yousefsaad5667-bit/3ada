@@ -1,0 +1,121 @@
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.prompt-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 150px;
+  text-align: center;
+  color: var(--text-secondary, #666);
+  font-style: italic;
+  padding: 20px;
+}
+
+.summary-header {
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-color, #e1e4e8);
+  padding-bottom: 8px;
+}
+
+.summary-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary, #24292e);
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 12px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-hover, #f6f8fa);
+  padding: 10px 16px;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary, #24292e);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #666);
+}
+
+.empty-day-text {
+  color: var(--intensity-high, #30a14e);
+  font-weight: 500;
+  margin: 0;
+}
+
+.summary-section {
+  h4 {
+    margin: 0 0 8px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #666);
+  }
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background-color: var(--bg-hover, #f6f8fa);
+  border: 1px solid var(--border-color, #e1e4e8);
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  color: var(--text-primary, #24292e);
+}
+
+.notes-list {
+  margin: 0;
+  padding-right: 16px;
+  font-size: 0.9rem;
+  color: var(--text-primary, #24292e);
+  
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .summary-title, .stat-value, .tag, .notes-list {
+    color: var(--text-primary, #c9d1d9);
+  }
+  .stat-label, .prompt-state, .summary-section h4 {
+    color: var(--text-secondary, #8b949e);
+  }
+  .summary-header {
+    border-bottom-color: var(--border-color, #30363d);
+  }
+  .stat-item, .tag {
+    background-color: var(--bg-hover, #161b22);
+  }
+  .tag {
+    border-color: var(--border-color, #30363d);
+  }
+  .empty-day-text {
+    color: var(--intensity-high, #26a641);
+  }
+}

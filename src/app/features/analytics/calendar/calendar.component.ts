@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HeatmapComponent } from './components/heatmap/heatmap.component';
+import { MonthlyCalendarComponent } from './components/monthly-calendar/monthly-calendar.component';
+import { DaySummaryCardComponent } from './components/day-summary-card/day-summary-card.component';
+import { DayDetailPopupComponent } from './components/day-detail-popup/day-detail-popup.component';
+import { CalendarAnalyticsService } from './services/calendar-analytics.service';
+import { DateRangeSelectorComponent } from '../../dashboard/components/date-range-selector/date-range-selector.component';
 
 @Component({
   selector: 'app-calendar',
-  imports: [],
+  standalone: true,
+  imports: [
+    CommonModule,
+    HeatmapComponent,
+    MonthlyCalendarComponent,
+    DaySummaryCardComponent,
+    DayDetailPopupComponent,
+    DateRangeSelectorComponent
+  ],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
 })
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export class CalendarComponent {}
+export class CalendarComponent {
+  public analyticsService = inject(CalendarAnalyticsService);
+}

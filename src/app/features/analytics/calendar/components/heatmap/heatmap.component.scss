@@ -1,0 +1,112 @@
+.heatmap-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary, #666);
+}
+
+.months-header {
+  display: grid;
+  /* Columns will be set inline to match the weeks */
+  /* Fallback structure */
+  display: flex;
+  position: relative;
+  height: 20px;
+  margin-right: 40px; /* Offset for weekday labels */
+}
+
+.month-label {
+  position: absolute;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #666);
+  white-space: nowrap;
+}
+
+.grid-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.weekdays-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #666);
+  padding-top: 4px; /* Align with first cell */
+  padding-bottom: 4px; /* Align with last cell */
+  height: 112px; /* 7 cells * 14px + 6 gaps * 2px = 110px approximately */
+  
+  span {
+    line-height: 14px;
+    height: 14px;
+    /* Hide some labels to reduce clutter (GitHub style) */
+    &:nth-child(even) {
+      visibility: hidden;
+    }
+  }
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 3px;
+}
+
+.heatmap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background-color: var(--intensity-none, #ebedf0);
+  transition: transform 0.1s;
+  
+  &.inactive {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
+  &.today {
+    border: 1px solid var(--text-primary, #24292e);
+  }
+
+  /* We expect parent application to define these vars or we use fallbacks */
+  &.intensity-none { background-color: var(--intensity-none, #ebedf0); }
+  &.intensity-low { background-color: var(--intensity-low, #9be9a8); }
+  &.intensity-medium { background-color: var(--intensity-medium, #40c463); }
+  &.intensity-high { background-color: var(--intensity-high, #30a14e); }
+  &.intensity-very-high { background-color: var(--intensity-very-high, #216e39); }
+  
+  &:not(.inactive) {
+    cursor: pointer;
+    
+    &:hover, &:focus-visible {
+      transform: scale(1.2);
+      outline: none;
+      box-shadow: 0 0 0 2px var(--focus-ring, rgba(3, 102, 214, 0.3));
+      z-index: 1;
+    }
+  }
+}
+
+/* Dark mode fallback variables if not globally provided */
+@media (prefers-color-scheme: dark) {
+  .heatmap-cell {
+    &.intensity-none { background-color: var(--intensity-none, #161b22); }
+    &.intensity-low { background-color: var(--intensity-low, #0e4429); }
+    &.intensity-medium { background-color: var(--intensity-medium, #006d32); }
+    &.intensity-high { background-color: var(--intensity-high, #26a641); }
+    &.intensity-very-high { background-color: var(--intensity-very-high, #39d353); }
+  }
+}
