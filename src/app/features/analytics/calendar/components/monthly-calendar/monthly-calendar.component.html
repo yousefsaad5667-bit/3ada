@@ -1,0 +1,50 @@
+@if (cardState() === 'empty' || !monthGrid()) {
+  <div class="empty-state">
+    {{ emptyMessageAr }}
+  </div>
+} @else {
+  <div class="monthly-calendar-container" dir="rtl">
+    <div class="calendar-header">
+      <button class="nav-btn" (click)="onPreviousMonth()" aria-label="الشهر السابق">&lt;</button>
+      <h3 class="month-label">{{ monthGrid().labelAr }}</h3>
+      <button class="nav-btn" (click)="onNextMonth()" aria-label="الشهر التالي">&gt;</button>
+    </div>
+
+    <div class="calendar-grid">
+      <div class="weekday-header">الأحد</div>
+      <div class="weekday-header">الإثنين</div>
+      <div class="weekday-header">الثلاثاء</div>
+      <div class="weekday-header">الأربعاء</div>
+      <div class="weekday-header">الخميس</div>
+      <div class="weekday-header">الجمعة</div>
+      <div class="weekday-header">السبت</div>
+
+      @for (blank of leadingBlanksArray(); track $index) {
+        <div class="day-cell empty-cell"></div>
+      }
+
+      @for (day of monthGrid().days; track day.date) {
+        <div 
+          class="day-cell intensity-{{ day.intensity }}"
+          [class.inactive]="!day.isInActiveRange"
+          [class.today]="day.isToday"
+          [class.selected]="day.date === selectedDate()"
+          [attr.tabindex]="day.isInActiveRange ? 0 : -1"
+          role="button"
+          (click)="onDayClick(day)"
+          (keydown)="onKeyDown($event, day)">
+          
+          <span class="day-number">{{ day.date.split('-')[2] }}</span>
+          
+          @if (day.count > 0) {
+            <span class="day-count">{{ day.count }}</span>
+          }
+        </div>
+      }
+
+      @for (blank of trailingBlanksArray(); track $index) {
+        <div class="day-cell empty-cell"></div>
+      }
+    </div>
+  </div>
+}

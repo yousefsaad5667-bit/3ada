@@ -1,0 +1,52 @@
+<div class="summary-container" dir="rtl">
+  @if (!detail()) {
+    <div class="prompt-state">
+      <p>{{ emptyPromptAr }}</p>
+    </div>
+  } @else {
+    <div class="summary-header">
+      <h3 class="summary-title">{{ detail()!.labelAr }}</h3>
+    </div>
+
+    <div class="summary-content">
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-value">{{ detail()!.totalCount }}</span>
+          <span class="stat-label">انتكاسة</span>
+        </div>
+        @if (detail()!.averageUrge !== null) {
+          <div class="stat-item">
+            <span class="stat-value">{{ detail()!.averageUrge | number:'1.0-1' }}</span>
+            <span class="stat-label">متوسط الرغبة</span>
+          </div>
+        }
+      </div>
+
+      @if (detail()!.isEmpty) {
+        <p class="empty-day-text">يوم خالٍ من الانتكاسات. استمر في تقدمك!</p>
+      } @else {
+        @if (detail()!.uniqueReasons.length > 0) {
+          <div class="summary-section">
+            <h4>الأسباب الشائعة</h4>
+            <div class="tags-list">
+              @for (reason of detail()!.uniqueReasons; track reason) {
+                <span class="tag">{{ reason }}</span>
+              }
+            </div>
+          </div>
+        }
+
+        @if (detail()!.notes.length > 0) {
+          <div class="summary-section">
+            <h4>الملاحظات</h4>
+            <ul class="notes-list">
+              @for (note of detail()!.notes; track note) {
+                <li>{{ note }}</li>
+              }
+            </ul>
+          </div>
+        }
+      }
+    </div>
+  }
+</div>

@@ -1,1 +1,21 @@
-<h1>???????</h1>
+<div class="calendar-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>تحليل التقويم</h1>
+      <app-date-range-selector></app-date-range-selector>
+    </div>
+  </header>
+
+  <div class="cards-grid">
+    <div class="full-width">
+      <app-heatmap></app-heatmap>
+    </div>
+    
+    <div class="two-columns">
+      <app-monthly-calendar></app-monthly-calendar>
+      <app-day-summary-card></app-day-summary-card>
+    </div>
+  </div>
+
+  <app-day-detail-popup></app-day-detail-popup>
+</div>

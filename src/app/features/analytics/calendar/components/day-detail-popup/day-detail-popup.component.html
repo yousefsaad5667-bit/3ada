@@ -1,0 +1,70 @@
+@if (isOpen() && detail()) {
+  <div class="popup-backdrop" (click)="onBackdropClick($event)">
+    <div class="popup-content" role="dialog" aria-modal="true" dir="rtl">
+      <div class="popup-header">
+        <h2 class="popup-title">{{ detail()!.labelAr }}</h2>
+        <button class="close-btn" (click)="onClose()" aria-label="إغلاق">&times;</button>
+      </div>
+
+      <div class="popup-body">
+        @if (detail()!.isEmpty) {
+          <div class="empty-state">
+            <p>لا توجد سجلات انتكاس في هذا اليوم.</p>
+          </div>
+        } @else {
+          <div class="stats-row">
+            <div class="stat-box">
+              <span class="stat-label">إجمالي الانتكاسات</span>
+              <span class="stat-value">{{ detail()!.totalCount }}</span>
+            </div>
+            @if (detail()!.averageUrge !== null) {
+              <div class="stat-box">
+                <span class="stat-label">متوسط مستوى الرغبة</span>
+                <span class="stat-value">{{ detail()!.averageUrge | number:'1.0-1' }}</span>
+              </div>
+            }
+          </div>
+
+          @if (detail()!.uniqueReasons.length > 0) {
+            <div class="detail-section">
+              <h4>الأسباب:</h4>
+              <ul class="reason-list">
+                @for (reason of detail()!.uniqueReasons; track reason) {
+                  <li>{{ reason }}</li>
+                }
+              </ul>
+            </div>
+          }
+
+          <div class="detail-section">
+            <h4>سجلات اليوم:</h4>
+            <div class="records-list">
+              @for (record of detail()!.records; track record.time) {
+                <div class="record-item">
+                  <div class="record-time">{{ formatTime(record.time, record.ampm) }}</div>
+                  <div class="record-details">
+                    <span class="record-count">عدد: {{ record.count }}</span>
+                    @if (record.urgeLevel !== null) {
+                      <span class="record-urge">رغبة: {{ record.urgeLevel }}</span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          @if (detail()!.notes.length > 0) {
+            <div class="detail-section">
+              <h4>الملاحظات:</h4>
+              <ul class="notes-list">
+                @for (note of detail()!.notes; track note) {
+                  <li>{{ note }}</li>
+                }
+              </ul>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+}

@@ -9,6 +9,13 @@
   --color-border: #334155;
   --color-warning-bg: #78350f;
   --color-warning-text: #fbbf24;
+
+  /* Calendar Heatmap Intensity Colors (Dark) */
+  --intensity-none: #161b22;
+  --intensity-low: #0e4429;
+  --intensity-medium: #006d32;
+  --intensity-high: #26a641;
+  --intensity-very-high: #39d353;
 }
 
 [data-theme='light'] {
@@ -22,6 +29,13 @@
   --color-border: #e2e8f0;
   --color-warning-bg: #fef3c7;
   --color-warning-text: #92400e;
+
+  /* Calendar Heatmap Intensity Colors (Light) */
+  --intensity-none: #ebedf0;
+  --intensity-low: #9be9a8;
+  --intensity-medium: #40c463;
+  --intensity-high: #30a14e;
+  --intensity-very-high: #216e39;
 }
 
 @media (prefers-color-scheme: light) {
@@ -36,5 +50,12 @@
     --color-border: #e2e8f0;
     --color-warning-bg: #fef3c7;
     --color-warning-text: #92400e;
+
+    /* Calendar Heatmap Intensity Colors (Light) */
+    --intensity-none: #ebedf0;
+    --intensity-low: #9be9a8;
+    --intensity-medium: #40c463;
+    --intensity-high: #30a14e;
+    --intensity-very-high: #216e39;
   }
 }
