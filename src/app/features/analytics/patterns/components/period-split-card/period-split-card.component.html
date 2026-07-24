@@ -1,0 +1,51 @@
+<div class="period-split-container" [attr.dir]="'rtl'">
+  <h3 class="chart-title">مقارنة الصباح والمساء</h3>
+  
+  <div class="card-content">
+    @if (status === 'data' && periodSplit.total > 0) {
+      <div class="split-visual">
+        <div class="segment am" [style.width.%]="periodSplit.amPercentage">
+          @if (periodSplit.amPercentage > 15) {
+            <span class="segment-label">{{ periodSplit.amPercentage }}% صباحاً</span>
+          }
+        </div>
+        <div class="segment pm" [style.width.%]="periodSplit.pmPercentage">
+          @if (periodSplit.pmPercentage > 15) {
+            <span class="segment-label">{{ periodSplit.pmPercentage }}% مساءً</span>
+          }
+        </div>
+      </div>
+      
+      <div class="split-details">
+        <div class="detail-item">
+          <div class="detail-indicator am"></div>
+          <div class="detail-text">
+            <span class="detail-label">الصباح (12 ص - 12 م)</span>
+            <span class="detail-value">{{ periodSplit.amCount }} مرة</span>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-indicator pm"></div>
+          <div class="detail-text">
+            <span class="detail-label">المساء (12 م - 12 ص)</span>
+            <span class="detail-value">{{ periodSplit.pmCount }} مرة</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dominant-insight">
+        @if (periodSplit.dominantPeriod === 'am') {
+          <span>أغلب النشاط يحدث في <strong>الفترة الصباحية</strong></span>
+        } @else if (periodSplit.dominantPeriod === 'pm') {
+          <span>أغلب النشاط يحدث في <strong>الفترة المسائية</strong></span>
+        } @else {
+          <span>يتساوى النشاط بين الصباح والمساء</span>
+        }
+      </div>
+    } @else {
+      <div class="empty-placeholder">
+        <span>لا توجد بيانات للعرض</span>
+      </div>
+    }
+  </div>
+</div>

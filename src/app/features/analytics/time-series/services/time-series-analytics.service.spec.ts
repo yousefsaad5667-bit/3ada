@@ -7,23 +7,25 @@ import { signal } from '@angular/core';
 
 describe('TimeSeriesAnalyticsService', () => {
   let service: TimeSeriesAnalyticsService;
-  
-  const mockFilterService = {
-    activeFilter: signal({
-      preset: 'last7',
-      startDate: new Date('2026-07-01T00:00:00'),
-      endDate: new Date('2026-07-07T23:59:59')
-    })
-  };
-
-  const mockRepository = {
-    records: signal([
-      { date: '2026-07-01', count: 2 } as any,
-      { date: '2026-07-02', count: 1 } as any
-    ])
-  };
+  let mockFilterService: any;
+  let mockRepository: any;
 
   beforeEach(() => {
+    mockFilterService = {
+      activeFilter: signal({
+        preset: 'last7',
+        startDate: new Date('2026-07-01T00:00:00'),
+        endDate: new Date('2026-07-07T23:59:59')
+      })
+    };
+
+    mockRepository = {
+      records: signal([
+        { date: '2026-07-01', count: 2 } as any,
+        { date: '2026-07-02', count: 1 } as any
+      ])
+    };
+
     TestBed.configureTestingModule({
       providers: [
         { provide: DashboardFilterService, useValue: mockFilterService },

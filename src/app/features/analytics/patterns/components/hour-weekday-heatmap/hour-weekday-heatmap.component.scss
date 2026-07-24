@@ -1,0 +1,177 @@
+.heatmap-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chart-title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+}
+
+.chart-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heatmap-grid-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  overflow-x: auto;
+  gap: 0.5rem;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 24px; /* Space for x-axis */
+  margin-top: 14px; /* Align with cells */
+}
+
+.y-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #6b7280);
+  white-space: nowrap;
+}
+
+.heatmap-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-cells {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.grid-cell {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background-color: var(--heatmap-none, #ebedf0);
+  transition: opacity 0.2s, background-color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &[data-intensity="low"] {
+    background-color: var(--heatmap-low, #9be9a8);
+  }
+  &[data-intensity="medium"] {
+    background-color: var(--heatmap-medium, #40c463);
+  }
+  &[data-intensity="high"] {
+    background-color: var(--heatmap-high, #30a14e);
+  }
+  &[data-intensity="very-high"] {
+    background-color: var(--heatmap-very-high, #216e39);
+  }
+}
+
+.x-axis {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  gap: 4px;
+  margin-right: 8px;
+  margin-top: -100%;
+  position: absolute;
+  visibility: hidden; 
+  /* Heatmap uses 24 columns for hour and 7 rows for weekday */
+  /* This setup implies weekdays are rows, hours are columns. */
+}
+
+/* Let's fix axis if weekdays are rows and hours are columns. 
+   Y-Axis = Weekdays, X-Axis = Hours. 
+   Oh, wait. In my implementation, grid-column = cell.hour, grid-row = cell.weekday.
+   So Rows = Weekdays (0 to 6), Columns = Hours (0 to 23).
+   So Y axis should be Weekdays, and X axis should be Hours. */
+
+.y-axis {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 0;
+  padding-bottom: 0;
+}
+
+.y-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #6b7280);
+  white-space: nowrap;
+}
+
+.x-axis {
+  position: relative;
+  visibility: visible;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.x-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #6b7280);
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #6b7280);
+}
+
+.legend-cells {
+  display: flex;
+  gap: 4px;
+}
+
+.legend-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  
+  &[data-intensity="none"] { background-color: var(--heatmap-none, #ebedf0); }
+  &[data-intensity="low"] { background-color: var(--heatmap-low, #9be9a8); }
+  &[data-intensity="medium"] { background-color: var(--heatmap-medium, #40c463); }
+  &[data-intensity="high"] { background-color: var(--heatmap-high, #30a14e); }
+  &[data-intensity="very-high"] { background-color: var(--heatmap-very-high, #216e39); }
+}
+
+.empty-placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #9ca3af);
+  font-size: 0.875rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chart-title { color: var(--text-primary-dark, #f9fafb); }
+  .y-label, .x-label, .heatmap-legend { color: var(--text-secondary-dark, #9ca3af); }
+  
+  .grid-cell, .legend-cell {
+    &[data-intensity="none"] { background-color: var(--heatmap-none-dark, #161b22); }
+    &[data-intensity="low"] { background-color: var(--heatmap-low-dark, #0e4429); }
+    &[data-intensity="medium"] { background-color: var(--heatmap-medium-dark, #006d32); }
+    &[data-intensity="high"] { background-color: var(--heatmap-high-dark, #26a641); }
+    &[data-intensity="very-high"] { background-color: var(--heatmap-very-high-dark, #39d353); }
+  }
+}

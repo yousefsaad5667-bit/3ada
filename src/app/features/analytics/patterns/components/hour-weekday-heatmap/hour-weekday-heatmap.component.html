@@ -1,0 +1,58 @@
+<div class="heatmap-container" [attr.dir]="'rtl'">
+  <h3 class="chart-title">خريطة الوقت والأسبوع</h3>
+  
+  <div class="chart-content">
+    @if (status === 'data' && heatmap.maxCellCount > 0) {
+      <div class="heatmap-grid-wrapper">
+        
+        <!-- Y Axis: Weekdays -->
+        <div class="y-axis">
+          @for (dayLabel of heatmap.weekdayLabelsAr; track dayLabel) {
+            <div class="y-label">{{ dayLabel }}</div>
+          }
+        </div>
+        
+        <!-- Heatmap Grid -->
+        <div class="heatmap-body">
+          <div class="grid-cells">
+            @for (cell of flatCells; track cell.weekday + '-' + cell.hour) {
+              <div 
+                class="grid-cell"
+                [attr.data-intensity]="cell.intensity"
+                [style.grid-column]="cell.hour + 1"
+                [style.grid-row]="cell.weekday + 1"
+                [title]="getTooltip(cell)">
+              </div>
+            }
+          </div>
+          
+          <!-- X Axis: Hours -->
+          <div class="x-axis">
+            @for (hourLabel of heatmap.hourLabelsAr; track hourLabel) {
+              <div class="x-label">{{ hourLabel }}</div>
+            }
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Legend -->
+      <div class="heatmap-legend">
+        <span class="legend-label">أقل نشاط</span>
+        <div class="legend-cells">
+          <div class="legend-cell" data-intensity="none"></div>
+          <div class="legend-cell" data-intensity="low"></div>
+          <div class="legend-cell" data-intensity="medium"></div>
+          <div class="legend-cell" data-intensity="high"></div>
+          <div class="legend-cell" data-intensity="very-high"></div>
+        </div>
+        <span class="legend-label">أكثر نشاط</span>
+      </div>
+
+    } @else {
+      <div class="empty-placeholder">
+        <span>لا توجد بيانات كافية لعرض الخريطة</span>
+      </div>
+    }
+  </div>
+</div>

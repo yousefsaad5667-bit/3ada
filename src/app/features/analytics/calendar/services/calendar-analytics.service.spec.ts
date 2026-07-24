@@ -42,6 +42,8 @@ describe('CalendarAnalyticsService', () => {
     mockRepository.records.set([
       { id: '1', date: '2026-06-15', time: '10:00', ampm: 'ص', count: 1, urgeLevel: null, reason: '', notes: '', createdAt: '', updatedAt: '' }
     ]);
+    // Match the currentMonth to the record date
+    service.currentMonth.set({ year: 2026, month: 6 });
     const state = service.state();
     expect(state.status).toBe('data');
     expect(state.heatmapGrid.maxDayCount).toBe(1);
