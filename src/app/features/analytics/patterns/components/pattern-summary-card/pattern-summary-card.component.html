@@ -1,0 +1,62 @@
+<div class="summary-container" [attr.dir]="'rtl'">
+  <h3 class="chart-title">أبرز أوقات النشاط</h3>
+  
+  <div class="card-content">
+    @if (status === 'data' && (summary.hasWeekdayInsights || summary.hasTimeInsights)) {
+      <div class="insights-list">
+        
+        <!-- Peak Weekdays -->
+        @if (summary.hasWeekdayInsights && summary.peakWeekdays.length > 0) {
+          <div class="insight-item">
+            <div class="insight-icon peak-icon">
+              <i class="icon-calendar-check"></i>
+            </div>
+            <div class="insight-text">
+              <span class="insight-label">أكثر الأيام نشاطاً</span>
+              <span class="insight-value">
+                @for (day of summary.peakWeekdays; track day.weekday; let last = $last) {
+                  {{ day.labelAr }}{{ !last ? ' و ' : '' }}
+                }
+              </span>
+            </div>
+          </div>
+        }
+
+        <!-- Peak Hours -->
+        @if (summary.hasTimeInsights && summary.peakHours.length > 0) {
+          <div class="insight-item">
+            <div class="insight-icon peak-icon">
+              <i class="icon-clock"></i>
+            </div>
+            <div class="insight-text">
+              <span class="insight-label">ساعات الذروة</span>
+              <span class="insight-value">
+                @for (hour of summary.peakHours; track hour.hour; let last = $last) {
+                  {{ hour.labelAr }}{{ !last ? ' و ' : '' }}
+                }
+              </span>
+            </div>
+          </div>
+        }
+
+        <!-- Least Active Weekday -->
+        @if (summary.hasWeekdayInsights && summary.leastActiveWeekday) {
+          <div class="insight-item">
+            <div class="insight-icon least-icon">
+              <i class="icon-calendar-minus"></i>
+            </div>
+            <div class="insight-text">
+              <span class="insight-label">أقل الأيام نشاطاً</span>
+              <span class="insight-value">{{ summary.leastActiveWeekday.labelAr }}</span>
+            </div>
+          </div>
+        }
+
+      </div>
+    } @else {
+      <div class="empty-placeholder">
+        <span>لا توجد بيانات كافية لاستخراج ملخص</span>
+      </div>
+    }
+  </div>
+</div>

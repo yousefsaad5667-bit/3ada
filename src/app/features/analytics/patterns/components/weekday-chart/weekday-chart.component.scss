@@ -1,0 +1,115 @@
+.weekday-chart-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chart-title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+}
+
+.chart-content {
+  flex: 1;
+  display: flex;
+  min-height: 200px;
+}
+
+.bars-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 0.5rem;
+}
+
+.bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 12%;
+  
+  &.is-peak .bar-fill {
+    background-color: var(--primary-color, #3b82f6);
+  }
+}
+
+.bar-track {
+  flex: 1;
+  width: 100%;
+  max-width: 32px;
+  background-color: var(--bg-secondary, #f3f4f6);
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  margin-bottom: 0.75rem;
+
+  &:hover .bar-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.bar-fill {
+  width: 100%;
+  background-color: var(--primary-light, #93c5fd);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.4s ease-out, background-color 0.3s;
+}
+
+.day-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #6b7280);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bar-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--tooltip-bg, #1f2937);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  z-index: 10;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: var(--tooltip-bg, #1f2937) transparent transparent transparent;
+  }
+}
+
+.empty-placeholder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #9ca3af);
+  font-size: 0.875rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chart-title { color: var(--text-primary-dark, #f9fafb); }
+  .bar-track { background-color: var(--bg-secondary-dark, #374151); }
+  .bar-fill { background-color: var(--primary-dark-muted, #1e40af); }
+  .day-label { color: var(--text-secondary-dark, #9ca3af); }
+}

@@ -16,6 +16,11 @@ import { TrendSummaryCardComponent } from '../analytics/time-series/components/t
 import { HeatmapComponent } from '../analytics/calendar/components/heatmap/heatmap.component';
 import { MonthlyCalendarComponent } from '../analytics/calendar/components/monthly-calendar/monthly-calendar.component';
 import { DaySummaryCardComponent } from '../analytics/calendar/components/day-summary-card/day-summary-card.component';
+import { WeekdayChartComponent } from '../analytics/patterns/components/weekday-chart/weekday-chart.component';
+import { HourlyChartComponent } from '../analytics/patterns/components/hourly-chart/hourly-chart.component';
+import { PeriodSplitCardComponent } from '../analytics/patterns/components/period-split-card/period-split-card.component';
+import { HourWeekdayHeatmapComponent } from '../analytics/patterns/components/hour-weekday-heatmap/hour-weekday-heatmap.component';
+import { PatternSummaryCardComponent } from '../analytics/patterns/components/pattern-summary-card/pattern-summary-card.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -75,6 +80,36 @@ export class DashboardComponent implements OnInit {
       titleAr: 'ملخص اليوم',
       component: DaySummaryCardComponent,
       defaultOrder: 7
+    },
+    {
+      id: 'patterns-weekday-chart',
+      titleAr: 'توزيع أيام الأسبوع',
+      component: WeekdayChartComponent,
+      defaultOrder: 8
+    },
+    {
+      id: 'patterns-hourly-chart',
+      titleAr: 'توزيع ساعات اليوم',
+      component: HourlyChartComponent,
+      defaultOrder: 9
+    },
+    {
+      id: 'patterns-period-split',
+      titleAr: 'مقارنة الصباح والمساء',
+      component: PeriodSplitCardComponent,
+      defaultOrder: 10
+    },
+    {
+      id: 'patterns-heatmap',
+      titleAr: 'خريطة الوقت والأسبوع',
+      component: HourWeekdayHeatmapComponent,
+      defaultOrder: 11
+    },
+    {
+      id: 'patterns-summary',
+      titleAr: 'أبرز أوقات النشاط',
+      component: PatternSummaryCardComponent,
+      defaultOrder: 12
     }
   ];
 

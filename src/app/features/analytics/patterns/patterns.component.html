@@ -1,1 +1,72 @@
-<h1>???????</h1>
+<div class="patterns-container" [attr.data-status]="state().status">
+  <!-- Error State -->
+  @if (state().status === 'error') {
+    <div class="patterns-error">
+      <i class="icon-error"></i>
+      <p>{{ state().errorMessageAr }}</p>
+    </div>
+  }
+
+  <!-- Loading State -->
+  @if (state().status === 'loading') {
+    <div class="patterns-loading">
+      <div class="spinner"></div>
+      <p>جاري تحميل البيانات...</p>
+    </div>
+  }
+
+  <!-- Empty State (No records at all in the active date range) -->
+  @if (state().status === 'empty') {
+    <div class="patterns-empty">
+      <i class="icon-empty"></i>
+      <p>لا توجد بيانات متاحة في هذه الفترة. استمر في تسجيل يومياتك لتظهر التحليلات هنا.</p>
+    </div>
+  }
+
+  <!-- Data State -->
+  @if (state().status === 'data') {
+    <div class="patterns-dashboard">
+      
+      <!-- First Row: Weekday and Hourly Distribution -->
+      <div class="patterns-row">
+        <app-weekday-chart 
+          class="patterns-card"
+          [weekdays]="state().weekdays"
+          [status]="state().status">
+        </app-weekday-chart>
+        
+        <app-hourly-chart 
+          class="patterns-card"
+          [hours]="state().hours"
+          [status]="state().status"
+          [skippedCount]="state().skippedRecordCount">
+        </app-hourly-chart>
+      </div>
+
+      <!-- Second Row: AM/PM Split and Summary -->
+      <div class="patterns-row">
+        <app-period-split-card 
+          class="patterns-card"
+          [periodSplit]="state().periodSplit"
+          [status]="state().status">
+        </app-period-split-card>
+
+        <app-pattern-summary-card 
+          class="patterns-card"
+          [summary]="state().summary"
+          [status]="state().status">
+        </app-pattern-summary-card>
+      </div>
+
+      <!-- Third Row: Hour-Weekday Heatmap -->
+      <div class="patterns-row">
+        <app-hour-weekday-heatmap 
+          class="patterns-card patterns-card--full"
+          [heatmap]="state().heatmap"
+          [status]="state().status">
+        </app-hour-weekday-heatmap>
+      </div>
+
+    </div>
+  }
+</div>

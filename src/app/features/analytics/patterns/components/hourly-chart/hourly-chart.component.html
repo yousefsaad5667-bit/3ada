@@ -1,0 +1,32 @@
+<div class="hourly-chart-container" [attr.dir]="'rtl'">
+  <div class="header">
+    <h3 class="chart-title">توزيع ساعات اليوم</h3>
+    @if (skippedCount > 0) {
+      <span class="skipped-badge" title="تم استبعاد السجلات التي لا تحتوي على وقت">
+        {{ skippedCount }} بدون وقت
+      </span>
+    }
+  </div>
+  
+  <div class="chart-content">
+    @if (status === 'data' && hours.length > 0) {
+      <div class="bars-container">
+        @for (hour of hours; track hour.hour) {
+          <div class="bar-group" [class.is-peak]="hour.isPeak">
+            <div class="bar-track">
+              <div class="bar-fill" [style.height.%]="hour.percentage">
+                <span class="bar-tooltip">{{ hour.count }} مرة ({{ hour.percentage }}%)</span>
+              </div>
+            </div>
+            <!-- Only show label every 4 hours to avoid crowding -->
+            <span class="hour-label" [class.hidden]="hour.hour % 4 !== 0">{{ hour.labelAr }}</span>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="empty-placeholder">
+        <span>لا توجد بيانات للعرض</span>
+      </div>
+    }
+  </div>
+</div>
