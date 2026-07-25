@@ -1,0 +1,72 @@
+<div class="timeline-container" [attr.dir]="'rtl'" role="region" aria-label="مسار المحفز المحدد">
+  <div class="chart-header">
+    <h3 class="chart-title">مسار المحفز المحدد</h3>
+    @if (trend) {
+      <span class="selected-keyword-badge">{{ trend.keyword }}</span>
+    }
+  </div>
+
+  <div class="chart-content">
+    @if (!trend) {
+      <div class="empty-placeholder">
+        <i class="icon-touch"></i>
+        <span>الرجاء اختيار أحد المحفزات من القائمة أعلاه لعرض مساره الزمني واتجاهه.</span>
+      </div>
+    } @else if (status === 'data') {
+      <div class="trend-summary-bar">
+        <div class="summary-item">
+          <span class="label">الاتجاه العام:</span>
+          @switch (trend.direction) {
+            @case ('increasing') {
+              <span class="badge badge--increasing">متزايد ↑</span>
+            }
+            @case ('decreasing') {
+              <span class="badge badge--decreasing">متناقص ↓</span>
+            }
+            @case ('stable') {
+              <span class="badge badge--stable">مستقر →</span>
+            }
+            @default {
+              <span class="badge badge--insufficient">بيانات غير كافية لتحديد الاتجاه</span>
+            }
+          }
+        </div>
+
+        @if (trend.peakDate) {
+          <div class="summary-item">
+            <span class="label">أعلى تكرار:</span>
+            <span class="value value--peak">{{ getPeakLabel() }}</span>
+          </div>
+        }
+
+        @if (trend.mostActivePeriodLabelAr) {
+          <div class="summary-item">
+            <span class="label">الفترة الأكثر نشاطاً:</span>
+            <span class="value">{{ trend.mostActivePeriodLabelAr }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="timeline-chart-wrapper">
+        <div class="bars-container">
+          @for (entry of trend.entries; track entry.date) {
+            <div class="bar-col" [class.is-peak]="entry.date === trend.peakDate && entry.count > 0">
+              <div class="bar-track">
+                <div class="bar-fill" [style.height.%]="(entry.count / getMaxCount()) * 100">
+                  @if (entry.count > 0) {
+                    <span class="bar-tooltip">{{ entry.labelAr }}: {{ entry.count }} مرة</span>
+                  }
+                </div>
+              </div>
+              <span class="date-label">{{ entry.labelAr }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="empty-placeholder">
+        <span>جاري تحميل البيانات...</span>
+      </div>
+    }
+  </div>
+</div>

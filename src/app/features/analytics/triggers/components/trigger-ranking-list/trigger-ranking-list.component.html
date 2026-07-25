@@ -1,0 +1,56 @@
+<div class="ranking-list-container" [attr.dir]="'rtl'">
+  <div class="list-header">
+    <h3 class="list-title">أكثر الأسباب تكراراً</h3>
+    @if (selectedKeyword) {
+      <button type="button" class="clear-selection-btn" (click)="keywordSelected.emit(null)">
+        إلغاء التحديد
+      </button>
+    }
+  </div>
+
+  <div class="list-content">
+    @if (status === 'data' && triggers.length > 0) {
+      <div class="triggers-list" role="list" aria-label="قائمة المحفزات الأكثر تكراراً">
+        @for (item of triggers; track item.keyword) {
+          <div 
+            class="trigger-item" 
+            role="listitem"
+            [class.selected]="selectedKeyword === item.keyword"
+            [class.is-rare]="item.isRare"
+            (click)="onSelect(item.keyword)"
+            tabindex="0"
+            (keydown.enter)="onSelect(item.keyword)"
+            (keydown.space)="onSelect(item.keyword); $event.preventDefault()">
+            
+            <div class="item-header">
+              <div class="keyword-section">
+                <span class="rank-badge">#{{ item.rank }}</span>
+                <span class="keyword-text">{{ item.keyword }}</span>
+                @if (item.isRare) {
+                  <span class="rare-badge" title="محفز نادر (أقل من 5% من التكرارات وأقل من 3 مرات)">محفز نادر</span>
+                }
+              </div>
+
+              <div class="stats-section">
+                @if (item.avgUrge !== null) {
+                  <span class="urge-badge" [ngClass]="'urge-badge--' + getUrgeClass(item.avgUrge)">
+                    شدة الرغبة: {{ item.avgUrge }}/10
+                  </span>
+                }
+                <span class="count-badge">{{ item.count }} مرة ({{ item.percentage }}%)</span>
+              </div>
+            </div>
+
+            <div class="progress-track">
+              <div class="progress-bar" [style.width.%]="item.percentage"></div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="empty-placeholder">
+        <span>لا توجد أسباب مطابقة للعرض</span>
+      </div>
+    }
+  </div>
+</div>

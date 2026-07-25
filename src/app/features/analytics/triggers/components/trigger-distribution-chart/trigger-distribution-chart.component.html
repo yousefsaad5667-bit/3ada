@@ -1,0 +1,39 @@
+<div class="distribution-chart-container" [attr.dir]="'rtl'" role="region" aria-label="توزيع المحفزات">
+  <div class="chart-header">
+    <h3 class="chart-title">توزيع المحفزات</h3>
+  </div>
+
+  <div class="chart-content">
+    @if (status === 'data' && (distribution.topTriggers.length > 0 || distribution.otherCount > 0)) {
+      <div class="bars-list">
+        @for (item of distribution.topTriggers; track item.keyword) {
+          <div class="bar-row">
+            <div class="row-header">
+              <span class="keyword-label">{{ item.keyword }}</span>
+              <span class="count-value">{{ item.count }} مرة ({{ item.percentage }}%)</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" [style.width.%]="item.percentage"></div>
+            </div>
+          </div>
+        }
+
+        @if (distribution.otherCount > 0) {
+          <div class="bar-row bar-row--other">
+            <div class="row-header">
+              <span class="keyword-label">أخرى (محفزات أقل تكراراً)</span>
+              <span class="count-value">{{ distribution.otherCount }} مرة ({{ distribution.otherPercentage }}%)</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill bar-fill--other" [style.width.%]="distribution.otherPercentage"></div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="empty-placeholder">
+        <span>لا توجد بيانات كافية لعرض التوزيع</span>
+      </div>
+    }
+  </div>
+</div>

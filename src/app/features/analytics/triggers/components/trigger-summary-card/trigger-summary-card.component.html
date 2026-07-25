@@ -1,0 +1,65 @@
+<div class="summary-card-container" [attr.dir]="'rtl'" role="region" aria-label="ملخص المحفزات">
+  <div class="card-header">
+    <h3 class="card-title">ملخص أسباب ومحفزات الانتكاسات</h3>
+  </div>
+
+  <div class="card-content">
+    @if (status === 'data' && (summary.totalKeywordCount > 0 || summary.triggerlessRecordCount > 0)) {
+      <div class="stat-tiles-grid">
+        <!-- Tile 1: Top Trigger -->
+        <div class="stat-tile">
+          <div class="tile-icon tile-icon--primary">🎯</div>
+          <div class="tile-info">
+            <span class="tile-label">المحفز الأكثر تكراراً</span>
+            <span class="tile-value">{{ summary.topTrigger?.keyword || 'لا يوجد' }}</span>
+            @if (summary.topTrigger) {
+              <span class="tile-subtext">{{ summary.topTrigger.count }} مرة ({{ summary.topTrigger.percentage }}% من التكرارات)</span>
+            }
+          </div>
+        </div>
+
+        <!-- Tile 2: Highest Urge Trigger -->
+        <div class="stat-tile">
+          <div class="tile-icon tile-icon--danger">🔥</div>
+          <div class="tile-info">
+            <span class="tile-label">المحفز ذو الرغبة الأشد</span>
+            <span class="tile-value tile-value--danger">{{ summary.highestUrgeKeyword || 'لا يوجد' }}</span>
+            @if (summary.highestAvgUrge !== null) {
+              <span class="tile-subtext">متوسط شدة الرغبة: {{ summary.highestAvgUrge }}/10</span>
+            }
+          </div>
+        </div>
+
+        <!-- Tile 3: Total Keywords -->
+        <div class="stat-tile">
+          <div class="tile-icon tile-icon--info">💡</div>
+          <div class="tile-info">
+            <span class="tile-label">عدد المحفزات المختلفة</span>
+            <span class="tile-value">{{ summary.totalKeywordCount }} محفز</span>
+            <span class="tile-subtext">من أصل {{ summary.totalOccurrences }} تكرار في الانتكاسات المسجلة</span>
+          </div>
+        </div>
+
+        <!-- Tile 4: Rare Triggers Count -->
+        <div class="stat-tile">
+          <div class="tile-icon tile-icon--purple">✨</div>
+          <div class="tile-info">
+            <span class="tile-label">المحفزات النادرة</span>
+            <span class="tile-value">{{ summary.rareTriggersCount }} محفز نادر</span>
+            <span class="tile-subtext">تظهر بنسبة أقل من 5% ولمرتين أو أقل</span>
+          </div>
+        </div>
+      </div>
+
+      @if (summary.triggerlessRecordCount > 0) {
+        <div class="footnote-alert">
+          <span>ℹ️ ملاحظة: هناك <strong>{{ summary.triggerlessRecordCount }}</strong> انتكاسة مسجلة في هذه الفترة بدون ذكر أي أسباب أو محفزات.</span>
+        </div>
+      }
+    } @else {
+      <div class="empty-placeholder">
+        <span>لا توجد بيانات كافية لإنشاء ملخص المحفزات</span>
+      </div>
+    }
+  </div>
+</div>

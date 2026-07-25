@@ -1,0 +1,226 @@
+.ranking-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .list-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary, #111827);
+    margin: 0;
+  }
+
+  .clear-selection-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color, #3b82f6);
+    font-size: 0.875rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: var(--primary-light, rgba(59, 130, 246, 0.1));
+    }
+  }
+}
+
+.list-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.triggers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.trigger-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--item-bg, #f9fafb);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--item-hover-bg, #f3f4f6);
+    border-color: var(--border-hover, #d1d5db);
+    transform: translateY(-1px);
+  }
+
+  &.selected {
+    background-color: var(--selected-bg, #eff6ff);
+    border-color: var(--primary-color, #3b82f6);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  &.is-rare {
+    border-style: dashed;
+  }
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.keyword-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rank-badge {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-muted, #6b7280);
+  min-width: 1.5rem;
+}
+
+.keyword-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+}
+
+.rare-badge {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  background-color: var(--rare-bg, #f3e8ff);
+  color: var(--rare-text, #6b21a8);
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.stats-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.urge-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-weight: 600;
+
+  &--low {
+    background-color: var(--badge-green-bg, #dcfce7);
+    color: var(--badge-green-text, #166534);
+  }
+
+  &--mid {
+    background-color: var(--badge-yellow-bg, #fef9c3);
+    color: var(--badge-yellow-text, #854d0e);
+  }
+
+  &--high {
+    background-color: var(--badge-red-bg, #fee2e2);
+    color: var(--badge-red-text, #991b1b);
+  }
+
+  &--none {
+    display: none;
+  }
+}
+
+.count-badge {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary, #4b5563);
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--track-bg, #e5e7eb);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color, #3b82f6);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.empty-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: var(--text-muted, #9ca3af);
+  font-size: 0.875rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .list-title {
+    color: var(--text-primary-dark, #f9fafb);
+  }
+
+  .trigger-item {
+    background-color: var(--item-bg-dark, #374151);
+    border-color: var(--border-color-dark, #4b5563);
+
+    &:hover {
+      background-color: var(--item-hover-bg-dark, #4b5563);
+      border-color: var(--border-hover-dark, #6b7280);
+    }
+
+    &.selected {
+      background-color: var(--selected-bg-dark, rgba(59, 130, 246, 0.15));
+      border-color: var(--primary-color, #60a5fa);
+    }
+  }
+
+  .keyword-text {
+    color: var(--text-primary-dark, #f9fafb);
+  }
+
+  .count-badge {
+    color: var(--text-secondary-dark, #d1d5db);
+  }
+
+  .progress-track {
+    background-color: var(--track-bg-dark, #4b5563);
+  }
+
+  .rare-badge {
+    background-color: var(--rare-bg-dark, rgba(147, 51, 234, 0.2));
+    color: var(--rare-text-dark, #d8b4fe);
+  }
+
+  .urge-badge {
+    &--low {
+      background-color: var(--badge-green-bg-dark, rgba(22, 101, 52, 0.3));
+      color: var(--badge-green-text-dark, #86efac);
+    }
+
+    &--mid {
+      background-color: var(--badge-yellow-bg-dark, rgba(133, 77, 14, 0.3));
+      color: var(--badge-yellow-text-dark, #fde047);
+    }
+
+    &--high {
+      background-color: var(--badge-red-bg-dark, rgba(153, 27, 27, 0.3));
+      color: var(--badge-red-text-dark, #fca5a5);
+    }
+  }
+}
