@@ -1,1 +1,73 @@
-<h1>????????</h1>
+<div class="triggers-container" [attr.data-status]="state().status">
+  <!-- Error State -->
+  @if (state().status === 'error') {
+    <div class="triggers-error">
+      <i class="icon-error"></i>
+      <p>{{ state().errorMessageAr }}</p>
+    </div>
+  }
+
+  <!-- Loading State -->
+  @if (state().status === 'loading') {
+    <div class="triggers-loading">
+      <div class="spinner"></div>
+      <p>جاري تحميل البيانات...</p>
+    </div>
+  }
+
+  <!-- Empty State -->
+  @if (state().status === 'empty') {
+    <div class="triggers-empty">
+      <i class="icon-empty"></i>
+      <p>لا توجد بيانات للمحفزات في هذه الفترة. تأكد من إدخال الأسباب والملاحظات عند تسجيل الانتكاسات.</p>
+    </div>
+  }
+
+  <!-- Data State -->
+  @if (state().status === 'data') {
+    <div class="triggers-dashboard">
+      <!-- First Row: Summary Card (US5) -->
+      <div class="triggers-row">
+        <app-trigger-summary-card
+          class="triggers-card triggers-card--full"
+          [summary]="state().summary"
+          [status]="state().status">
+        </app-trigger-summary-card>
+      </div>
+
+      <!-- Second Row: Search (US4) and Ranking List (US1) -->
+      <div class="triggers-row">
+        <app-trigger-search
+          class="triggers-card triggers-card--full"
+          [status]="state().status"
+          (queryChanged)="service.searchQuery.set($event)">
+        </app-trigger-search>
+        <app-trigger-ranking-list
+          class="triggers-card triggers-card--full"
+          [triggers]="service.filteredTriggers()"
+          [status]="state().status"
+          [selectedKeyword]="service.selectedKeyword()"
+          (keywordSelected)="service.selectedKeyword.set($event)">
+        </app-trigger-ranking-list>
+      </div>
+
+      <!-- Third Row: Distribution Chart (US2) -->
+      <div class="triggers-row">
+        <app-trigger-distribution-chart
+          class="triggers-card triggers-card--full"
+          [distribution]="state().distribution"
+          [status]="state().status">
+        </app-trigger-distribution-chart>
+      </div>
+
+      <!-- Fourth Row: Timeline (US3) -->
+      <div class="triggers-row">
+        <app-trigger-timeline
+          class="triggers-card triggers-card--full"
+          [trend]="service.triggerTrend()"
+          [status]="state().status">
+        </app-trigger-timeline>
+      </div>
+    </div>
+  }
+</div>

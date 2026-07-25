@@ -1,0 +1,23 @@
+<div class="search-container" [attr.dir]="'rtl'" role="search">
+  <div class="search-input-wrapper">
+    <span class="search-icon">🔍</span>
+    <input 
+      type="text" 
+      class="search-input"
+      [disabled]="status !== 'data'"
+      [value]="query"
+      (input)="onInput($any($event.target).value)"
+      placeholder="ابحث في أسباب ومحفزات الانتكاسات..."
+      aria-label="بحث في قائمة المحفزات"
+    />
+    @if (query) {
+      <button 
+        type="button" 
+        class="clear-btn" 
+        (click)="clear()" 
+        aria-label="مسح نص البحث">
+        ✕
+      </button>
+    }
+  </div>
+</div>

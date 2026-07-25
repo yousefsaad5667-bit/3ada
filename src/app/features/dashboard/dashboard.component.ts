@@ -21,6 +21,10 @@ import { HourlyChartComponent } from '../analytics/patterns/components/hourly-ch
 import { PeriodSplitCardComponent } from '../analytics/patterns/components/period-split-card/period-split-card.component';
 import { HourWeekdayHeatmapComponent } from '../analytics/patterns/components/hour-weekday-heatmap/hour-weekday-heatmap.component';
 import { PatternSummaryCardComponent } from '../analytics/patterns/components/pattern-summary-card/pattern-summary-card.component';
+import { TriggerRankingListComponent } from '../analytics/triggers/components/trigger-ranking-list/trigger-ranking-list.component';
+import { TriggerDistributionChartComponent } from '../analytics/triggers/components/trigger-distribution-chart/trigger-distribution-chart.component';
+import { TriggerTimelineComponent } from '../analytics/triggers/components/trigger-timeline/trigger-timeline.component';
+import { TriggerSummaryCardComponent } from '../analytics/triggers/components/trigger-summary-card/trigger-summary-card.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -110,6 +114,30 @@ export class DashboardComponent implements OnInit {
       titleAr: 'أبرز أوقات النشاط',
       component: PatternSummaryCardComponent,
       defaultOrder: 12
+    },
+    {
+      id: 'triggers-ranking',
+      titleAr: 'أكثر الأسباب تكراراً',
+      component: TriggerRankingListComponent,
+      defaultOrder: 13
+    },
+    {
+      id: 'triggers-distribution',
+      titleAr: 'توزيع المحفزات',
+      component: TriggerDistributionChartComponent,
+      defaultOrder: 14
+    },
+    {
+      id: 'triggers-timeline',
+      titleAr: 'مسار المحفز المحدد',
+      component: TriggerTimelineComponent,
+      defaultOrder: 15
+    },
+    {
+      id: 'triggers-summary',
+      titleAr: 'ملخص المحفزات',
+      component: TriggerSummaryCardComponent,
+      defaultOrder: 16
     }
   ];
 

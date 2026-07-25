@@ -1,0 +1,113 @@
+.distribution-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+
+  .chart-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary, #111827);
+    margin: 0;
+  }
+}
+
+.chart-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.bars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+
+  &--other {
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-color, #e5e7eb);
+  }
+}
+
+.row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.keyword-label {
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+}
+
+.count-value {
+  font-weight: 500;
+  color: var(--text-secondary, #4b5563);
+}
+
+.bar-track {
+  width: 100%;
+  height: 10px;
+  background-color: var(--track-bg, #f3f4f6);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-dark, #2563eb), var(--primary-color, #3b82f6));
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+
+  &--other {
+    background: var(--other-bar-bg, #9ca3af);
+  }
+}
+
+.empty-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: var(--text-muted, #9ca3af);
+  font-size: 0.875rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chart-title,
+  .keyword-label {
+    color: var(--text-primary-dark, #f9fafb);
+  }
+
+  .count-value {
+    color: var(--text-secondary-dark, #d1d5db);
+  }
+
+  .bar-row--other {
+    border-top-color: var(--border-color-dark, #4b5563);
+  }
+
+  .bar-track {
+    background-color: var(--track-bg-dark, #374151);
+  }
+
+  .bar-fill {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+
+    &--other {
+      background: var(--other-bar-bg-dark, #6b7280);
+    }
+  }
+}

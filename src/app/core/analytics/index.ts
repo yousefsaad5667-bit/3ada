@@ -3,7 +3,8 @@ export * from './models/analytics.types';
 export * from './models/analytics-granularity.types';
 
 // Utils
-export { getDateRangeBounds } from './utils/date-range.utils';
+export { getDateRangeBounds, iterateDateRange, isValidDate, formatISO } from './utils/date-range.utils';
+export { extractKeywords } from './utils/keyword.utils';
 
 // Time Series Engine
 export {
