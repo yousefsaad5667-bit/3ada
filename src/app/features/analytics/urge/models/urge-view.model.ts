@@ -4,7 +4,7 @@ import {
   UrgeHourEntry,
   UrgeTriggerEntry,
   UrgeWeekdayEntry,
-} from '../../../../../core/analytics/models/analytics.types';
+} from '../../../../core/analytics/models/analytics.types';
 
 export type UrgeStatus = 'loading' | 'empty' | 'data' | 'error';
 
