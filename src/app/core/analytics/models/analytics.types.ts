@@ -83,3 +83,30 @@ export interface UrgeAnalysisResult {
   max: number | null;
   timeSeries: TimeSeriesEntry[];
 }
+
+export interface UrgeHourEntry {
+  hour: number;
+  label: string;
+  avgUrge: number | null;
+}
+
+export interface UrgeWeekdayEntry {
+  weekday: number;
+  labelAr: string;
+  avgUrge: number | null;
+}
+
+export interface UrgeTriggerEntry {
+  keyword: string;
+  count: number;
+  avgUrge: number | null;
+  isLimitedSample: boolean;
+}
+
+export interface UrgeCorrelationResult {
+  direction: 'positive' | 'negative' | 'neutral' | 'insufficient-data';
+  pearsonR: number | null;
+  explanationAr: string;
+  weeklyBucketsCount: number;
+}
+

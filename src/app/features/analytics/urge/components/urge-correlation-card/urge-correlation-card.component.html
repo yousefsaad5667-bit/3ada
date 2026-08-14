@@ -1,0 +1,23 @@
+<div class="correlation-card">
+  <div class="card-header">
+    <h3 class="card-title">الارتباط بين الرغبة الشديدة والانتكاس</h3>
+  </div>
+
+  <div class="card-content">
+    <div class="direction-icon" [ngClass]="correlation.direction">
+      <ng-container *ngIf="correlation.direction === 'positive'">📈</ng-container>
+      <ng-container *ngIf="correlation.direction === 'negative'">📉</ng-container>
+      <ng-container *ngIf="correlation.direction === 'neutral'">➖</ng-container>
+      <ng-container *ngIf="correlation.direction === 'insufficient-data'">⚠️</ng-container>
+    </div>
+
+    <div class="explanation-container">
+      <p class="explanation-text">{{ correlation.explanationAr }}</p>
+      <span class="pearson-r" *ngIf="correlation.pearsonR !== null">(r = {{ correlation.pearsonR }})</span>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    تم بناء هذا التحليل على {{ correlation.weeklyBucketsCount }} أسابيع من البيانات.
+  </div>
+</div>

@@ -27,4 +27,4 @@ export {
 export { getHeatmap } from './engine/heatmap.engine';
 export { getWeekdayAnalysis, getHourAnalysis } from './engine/pattern.engine';
 export { getTriggerAnalysis } from './engine/trigger.engine';
-export { getUrgeAnalysis } from './engine/urge.engine';
+export { getUrgeAnalysis, getUrgeByHour, getUrgeByWeekday, getUrgeCorrelation } from './engine/urge.engine';

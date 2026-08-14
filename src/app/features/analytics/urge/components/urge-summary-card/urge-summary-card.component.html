@@ -1,0 +1,29 @@
+<div class="summary-card">
+  <div class="summary-header">
+    <h3 class="summary-title">ملخص الرغبة الشديدة</h3>
+    <span class="trend-badge" [ngClass]="trendClass">{{ trendLabel }}</span>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-tile">
+      <span class="stat-label">المتوسط</span>
+      <span class="stat-value">{{ summary.average ?? '-' }}</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">الأقصى</span>
+      <span class="stat-value">{{ summary.max ?? '-' }}</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">الأدنى</span>
+      <span class="stat-value">{{ summary.min ?? '-' }}</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">الوسيط</span>
+      <span class="stat-value">{{ summary.median ?? '-' }}</span>
+    </div>
+  </div>
+
+  <div class="excluded-note" *ngIf="excludedCount > 0">
+    تم استبعاد {{ excludedCount }} {{ excludedCount === 1 ? 'سجل' : 'سجلات' }} لعدم احتوائها على بيانات الرغبة.
+  </div>
+</div>

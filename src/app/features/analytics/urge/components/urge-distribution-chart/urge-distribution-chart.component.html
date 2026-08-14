@@ -1,0 +1,33 @@
+<div class="chart-card">
+  <div class="chart-header">
+    <h3 class="chart-title">توزيع شدة الرغبة</h3>
+  </div>
+
+  <div class="distribution-container" *ngIf="distribution.length > 0; else emptyState">
+    <div class="distribution-row" *ngFor="let item of distribution">
+      
+      <div class="row-header">
+        <span class="level-label">مستوى {{ item.label }}</span>
+        <span class="severity-badge" [ngClass]="getSeverityClass(item.label)">
+          {{ getSeverityLabel(item.label) }}
+        </span>
+      </div>
+
+      <div class="bar-container">
+        <div class="bar-fill" [style.width.%]="item.percentage" [ngClass]="getSeverityClass(item.label)"></div>
+      </div>
+
+      <div class="row-stats">
+        <span class="count-text">{{ item.count }} {{ item.count === 1 ? 'مرة' : 'مرات' }}</span>
+        <span class="percentage-text">{{ item.percentage }}%</span>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      لا تتوفر بيانات
+    </div>
+  </ng-template>
+</div>
