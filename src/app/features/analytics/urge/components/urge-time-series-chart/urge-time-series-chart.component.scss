@@ -1,0 +1,91 @@
+.chart-card {
+  background: var(--surface-card, #ffffff);
+  border-radius: var(--border-radius-lg, 12px);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.05));
+  border: 1px solid var(--border-color, #eaeaea);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .chart-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-color, #333333);
+  }
+
+  .trend-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &.trend-bad {
+      background: var(--danger-color-light, #fee2e2);
+      color: var(--danger-color, #dc2626);
+    }
+    
+    &.trend-good {
+      background: var(--success-color-light, #dcfce7);
+      color: var(--success-color, #16a34a);
+    }
+    
+    &.trend-neutral {
+      background: var(--surface-hover, #f3f4f6);
+      color: var(--text-color-secondary, #6b7280);
+    }
+  }
+}
+
+.placeholder-notice {
+  background: var(--surface-ground, #fafafa);
+  border: 1px dashed var(--border-color, #eaeaea);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-color-secondary, #6b7280);
+  border-radius: var(--border-radius-md, 8px);
+  font-size: 0.875rem;
+}
+
+.data-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color, #eaeaea);
+  }
+
+  th {
+    font-weight: 600;
+    color: var(--text-color-secondary, #6b7280);
+    background: var(--surface-hover, #f9fafb);
+  }
+
+  .date-cell {
+    text-align: left;
+    color: var(--text-color-secondary, #6b7280);
+    width: 120px;
+  }
+}
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-color-secondary, #6b7280);
+  background: var(--surface-ground, #fafafa);
+  border-radius: var(--border-radius-md, 8px);
+}

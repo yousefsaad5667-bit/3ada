@@ -1,0 +1,64 @@
+.urge-analytics-container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  direction: rtl;
+}
+
+.page-header {
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-color, #1f2937);
+  margin: 0;
+}
+
+.analytics-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.empty-state, .error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: var(--surface-card, #ffffff);
+  border-radius: var(--border-radius-lg, 12px);
+  border: 1px dashed var(--border-color, #d1d5db);
+  text-align: center;
+
+  .empty-icon, .error-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color, #374151);
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-color-secondary, #6b7280);
+  }
+}
+
+.error-state {
+  border-color: var(--danger-color, #ef4444);
+  background: var(--danger-color-light, #fee2e2);
+  
+  h3 {
+    color: var(--danger-color, #b91c1c);
+  }
+}

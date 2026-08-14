@@ -1,0 +1,107 @@
+.chart-card {
+  background: var(--surface-card, #ffffff);
+  border-radius: var(--border-radius-lg, 12px);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.05));
+  border: 1px solid var(--border-color, #eaeaea);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.chart-header {
+  .chart-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-color, #333333);
+  }
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface-ground, #fafafa);
+  border-radius: var(--border-radius-md, 8px);
+  border: 1px solid var(--border-color, #eaeaea);
+}
+
+.rank-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-color-light, #eff6ff);
+  color: var(--primary-color, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.keyword-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+
+  .keyword {
+    font-weight: 600;
+    color: var(--text-color, #374151);
+  }
+
+  .limited-sample-badge {
+    padding: 0.125rem 0.5rem;
+    background: var(--warning-color-light, #fef3c7);
+    color: var(--warning-color, #d97706);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
+
+.stats-area {
+  display: flex;
+  gap: 1.5rem;
+
+  .stat-group {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-color-secondary, #6b7280);
+  }
+
+  .stat-value {
+    font-weight: 600;
+    font-size: 0.875rem;
+
+    &.avg {
+      color: var(--danger-color, #dc2626);
+    }
+
+    &.count {
+      color: var(--primary-color, #2563eb);
+    }
+  }
+}
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-color-secondary, #6b7280);
+  background: var(--surface-ground, #fafafa);
+  border-radius: var(--border-radius-md, 8px);
+}

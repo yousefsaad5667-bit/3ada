@@ -1,0 +1,68 @@
+.correlation-card {
+  background: var(--surface-card, #ffffff);
+  border-radius: var(--border-radius-lg, 12px);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.05));
+  border: 1px solid var(--border-color, #eaeaea);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card-header {
+  .card-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-color, #333333);
+  }
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--surface-ground, #fafafa);
+  border-radius: var(--border-radius-md, 8px);
+}
+
+.direction-icon {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.positive { color: var(--danger-color, #dc2626); } /* More urges = more relapse */
+  &.negative { color: var(--success-color, #16a34a); }
+  &.neutral { color: var(--text-color-secondary, #6b7280); }
+  &.insufficient-data { color: var(--warning-color, #d97706); }
+}
+
+.explanation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+
+  .explanation-text {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-color, #374151);
+    line-height: 1.5;
+  }
+
+  .pearson-r {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-color-secondary, #6b7280);
+    direction: ltr; /* keep r = x.xx correctly formatted */
+    text-align: right;
+  }
+}
+
+.card-footer {
+  font-size: 0.75rem;
+  color: var(--text-color-secondary, #9ca3af);
+  text-align: right;
+}

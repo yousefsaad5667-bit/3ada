@@ -1,1 +1,69 @@
-<h1>??????? ???????</h1>
+<div class="urge-analytics-container">
+  <div class="page-header">
+    <h1 class="page-title">تحليل الرغبة الشديدة</h1>
+  </div>
+
+  <ng-container *ngIf="state().status === 'empty'">
+    <div class="empty-state">
+      <div class="empty-icon">📊</div>
+      <h3>لا تتوفر بيانات</h3>
+      <p>لم يتم تسجيل أي انتكاسات تتضمن مستويات رغبة شديدة في هذه الفترة.</p>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="state().status === 'error'">
+    <div class="error-state">
+      <div class="error-icon">⚠️</div>
+      <h3>{{ state().errorMessageAr }}</h3>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="state().status === 'data'">
+    <div class="analytics-content">
+      <!-- Summary Card -->
+      <app-urge-summary-card 
+        [summary]="state().summary" 
+        [excludedCount]="state().excludedRecordCount">
+      </app-urge-summary-card>
+      
+      <!-- Time Series Chart -->
+      <app-urge-time-series-chart
+        [timeSeries]="state().timeSeries">
+      </app-urge-time-series-chart>
+      
+      <!-- Distribution Chart -->
+      <app-urge-distribution-chart
+        [distribution]="state().distribution">
+      </app-urge-distribution-chart>
+      
+      <div class="patterns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <!-- By Hour Chart -->
+        <app-urge-by-hour-chart
+          [byHour]="state().byHour">
+        </app-urge-by-hour-chart>
+
+        <!-- By Weekday Chart -->
+        <app-urge-by-weekday-chart
+          [byWeekday]="state().byWeekday">
+        </app-urge-by-weekday-chart>
+      </div>
+      
+      <!-- By Trigger Chart -->
+      <app-urge-by-trigger-chart
+        [byTrigger]="state().byTrigger">
+      </app-urge-by-trigger-chart>
+
+      <!-- Correlation Card -->
+      <app-urge-correlation-card
+        [correlation]="state().correlation">
+      </app-urge-correlation-card>
+
+      <!-- Future charts will go here -->
+    </div>
+  </ng-container>
+</div>
+
+
+
+
+

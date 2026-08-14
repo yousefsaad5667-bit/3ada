@@ -1,0 +1,35 @@
+<div class="chart-card">
+  <div class="chart-header">
+    <h3 class="chart-title">مسار الرغبة بمرور الوقت</h3>
+    <span class="trend-badge" [ngClass]="trendClass" *ngIf="timeSeries.entries.length > 0">{{ trendLabel }}</span>
+  </div>
+
+  <div class="placeholder-notice" aria-label="رسم بياني سيُضاف في المرحلة ١٢">
+    رسم بياني سيُضاف في المرحلة ١٢
+  </div>
+
+  <div class="data-container" *ngIf="timeSeries.entries.length > 0; else emptyState">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>التاريخ</th>
+          <th>متوسط الرغبة اليومي</th>
+          <th>المتوسط المتحرك (٧ أيام)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of timeSeries.entries">
+          <td dir="ltr" class="date-cell">{{ entry.date }}</td>
+          <td>{{ entry.rawUrge ?? '-' }}</td>
+          <td>{{ entry.movingAverageUrge ?? '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      لا تتوفر بيانات للفترة المحددة
+    </div>
+  </ng-template>
+</div>
