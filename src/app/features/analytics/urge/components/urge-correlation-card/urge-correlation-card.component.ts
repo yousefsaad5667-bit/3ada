@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/core';
-import { UrgeCorrelationResult } from '../../../../core/analytics/models/analytics.types';
+import { CommonModule } from '@angular/common';
+import { UrgeCorrelationResult } from '../../../../../core/analytics/models/analytics.types';
 
 @Component({
   selector: 'app-urge-correlation-card',

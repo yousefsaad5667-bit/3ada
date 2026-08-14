@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/core';
-import { DistributionEntry } from '../../../../core/analytics/models/analytics.types';
+import { CommonModule } from '@angular/common';
+import { DistributionEntry } from '../../../../../core/analytics/models/analytics.types';
 
 @Component({
   selector: 'app-urge-distribution-chart',

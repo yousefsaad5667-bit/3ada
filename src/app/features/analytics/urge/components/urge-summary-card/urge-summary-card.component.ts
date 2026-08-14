@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { UrgeSummaryView } from '../../models/urge-view.model';
 
 @Component({

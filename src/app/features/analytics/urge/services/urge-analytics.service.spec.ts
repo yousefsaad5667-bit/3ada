@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
 import { UrgeAnalyticsService } from './urge-analytics.service';
 import { DashboardFilterService } from '../../../dashboard/services/dashboard-filter.service';
-import { RelapseRecordRepository } from '../../../../core/services/relapse-record.repository';
-import { RelapseRecord } from '../../../../core/models/relapse-record.model';
+import { RelapseRecordRepository } from '../../../../../core/services/relapse-record.repository';
+import { RelapseRecord } from '../../../../../core/models/relapse-record.model';
 
 describe('UrgeAnalyticsService', () => {
   let service: UrgeAnalyticsService;

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CommonModule } from '@angular/core';
-import { UrgeHourEntry } from '../../../../core/analytics/models/analytics.types';
+import { CommonModule } from '@angular/common';
+import { UrgeHourEntry } from '../../../../../core/analytics/models/analytics.types';
 
 @Component({
   selector: 'app-urge-by-hour-chart',

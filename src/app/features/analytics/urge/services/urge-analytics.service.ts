@@ -1,6 +1,6 @@
 import { Injectable, Signal, computed, inject } from '@angular/core';
 import { DashboardFilterService } from '../../../dashboard/services/dashboard-filter.service';
-import { RelapseRecordRepository } from '../../../../core/services/relapse-record.repository';
+import { RelapseRecordRepository } from '../../../../../core/services/relapse-record.repository';
 import { UrgeAnalyticsState } from '../models/urge-view.model';
 import { 
   getUrgeAnalysis, 
@@ -11,8 +11,8 @@ import {
   getTrendSummary,
   getDistribution,
   getTriggerAnalysis
-} from '../../../../core/analytics';
-import { isValidDate } from '../../../../core/analytics/utils/date-range.utils';
+} from '../../../../../core/analytics';
+import { isValidDate } from '../../../../../core/analytics/utils/date-range.utils';
 
 @Injectable({
   providedIn: 'root'

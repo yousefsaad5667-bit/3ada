@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { UrgeAnalyticsService } from './services/urge-analytics.service';
 import { UrgeSummaryCardComponent } from './components/urge-summary-card/urge-summary-card.component';
 import { UrgeTimeSeriesChartComponent } from './components/urge-time-series-chart/urge-time-series-chart.component';
