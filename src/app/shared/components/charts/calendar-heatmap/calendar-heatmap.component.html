@@ -1,0 +1,65 @@
+<app-chart-card
+  [titleAr]="titleAr"
+  (exportPng)="onExportPng()"
+  (exportSvg)="onExportSvg()">
+
+  @if (loading()) {
+    <app-chart-loading-skeleton />
+  } @else if (isEmpty) {
+    <app-chart-empty-state />
+  } @else {
+    <div class="cal-heatmap" dir="ltr">
+
+      <!-- Month labels row -->
+      <div class="cal-heatmap__months"
+           [style.--week-count]="calendarGrid().length">
+        @for (m of monthLabels(); track m.label) {
+          <span class="cal-heatmap__month-label"
+                [style.grid-column]="m.colIndex + 1">
+            {{ m.label }}
+          </span>
+        }
+      </div>
+
+      <!-- Main grid: day-name labels on right (RTL) + week columns -->
+      <div class="cal-heatmap__body">
+
+        <!-- Day name labels (ح ن ث ع خ ج س) on right -->
+        <div class="cal-heatmap__day-labels" dir="rtl">
+          @for (day of dayLabels; track day) {
+            <span class="cal-heatmap__day-label">{{ day }}</span>
+          }
+        </div>
+
+        <!-- Week columns -->
+        <div class="cal-heatmap__weeks"
+             [style.--week-count]="calendarGrid().length">
+          @for (week of calendarGrid(); track week.weekIndex) {
+            <div class="cal-heatmap__week">
+              @for (day of week.days; track day.dayOfWeek) {
+                <div
+                  class="cal-heatmap__cell {{ day.date ? 'intensity-' + day.intensity : 'cal-heatmap__cell--empty' }}"
+                  [attr.title]="day.tooltipLabelAr || null"
+                  [attr.aria-label]="day.tooltipLabelAr || null"
+                  role="gridcell">
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+      </div>
+
+      <!-- Intensity legend -->
+      <div class="cal-heatmap__legend" dir="rtl">
+        <span class="cal-heatmap__legend-label">أقل</span>
+        @for (i of [0,1,2,3,4]; track i) {
+          <div class="cal-heatmap__legend-swatch intensity-{{ i }}"></div>
+        }
+        <span class="cal-heatmap__legend-label">أكثر</span>
+      </div>
+
+    </div>
+  }
+
+</app-chart-card>

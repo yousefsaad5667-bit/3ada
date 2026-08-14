@@ -18,9 +18,11 @@ describe('UrgeByWeekdayChartComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create and calculate highest average', () => {
+  it('should create and map chartSeries correctly', () => {
     expect(component).toBeTruthy();
-    expect(component.highestAvg).toBe(5);
-    expect(component.hasData).toBe(true);
+    expect(component.chartSeries.length).toBe(1);
+    expect(component.chartSeries[0].data.length).toBe(1);
+    expect(component.chartSeries[0].data[0].label).toBe('الأحد');
+    expect(component.chartSeries[0].data[0].value).toBe(5);
   });
 });

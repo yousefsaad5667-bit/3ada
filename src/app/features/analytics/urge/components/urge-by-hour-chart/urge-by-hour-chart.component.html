@@ -1,41 +1,4 @@
-<div class="chart-card">
-  <div class="chart-header">
-    <h3 class="chart-title">متوسط الرغبة حسب الساعة</h3>
-  </div>
-
-  <div class="list-container" *ngIf="highestAvg !== null; else emptyState">
-    <div class="list-row" *ngFor="let item of sortedByHour" [class.is-highest]="item.avgUrge !== null && item.avgUrge === highestAvg && highestAvg > 0">
-      
-      <div class="hour-label">
-        {{ item.label }}
-      </div>
-
-      <div class="bar-area">
-        <!-- Render a bar if there's data, else a placeholder -->
-        <ng-container *ngIf="item.avgUrge !== null; else noDataBar">
-          <div class="bar-fill" [style.width.%]="(item.avgUrge / 10) * 100"></div>
-        </ng-container>
-        <ng-template #noDataBar>
-          <div class="bar-fill empty" style="width: 0%"></div>
-        </ng-template>
-      </div>
-
-      <div class="stats-area">
-        <ng-container *ngIf="item.avgUrge !== null; else noDataText">
-          <span class="avg-value">{{ item.avgUrge }}</span>
-          <span class="highest-badge" *ngIf="item.avgUrge === highestAvg && highestAvg > 0">الأعلى</span>
-        </ng-container>
-        <ng-template #noDataText>
-          <span class="no-data-label">لا بيانات</span>
-        </ng-template>
-      </div>
-
-    </div>
-  </div>
-
-  <ng-template #emptyState>
-    <div class="empty-state">
-      لا تتوفر بيانات الوقت للفترة المحددة
-    </div>
-  </ng-template>
-</div>
+<app-bar-chart
+  [series]="chartSeries"
+  [config]="chartConfig">
+</app-bar-chart>

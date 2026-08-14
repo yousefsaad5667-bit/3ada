@@ -18,9 +18,11 @@ describe('UrgeByHourChartComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create and sort entries', () => {
+  it('should create and map chartSeries correctly', () => {
     expect(component).toBeTruthy();
-    expect(component.sortedByHour[0].hour).toBe(14);
-    expect(component.highestAvg).toBe(8);
+    expect(component.chartSeries.length).toBe(1);
+    expect(component.chartSeries[0].data.length).toBe(1);
+    expect(component.chartSeries[0].data[0].label).toBe('2 م');
+    expect(component.chartSeries[0].data[0].value).toBe(8);
   });
 });

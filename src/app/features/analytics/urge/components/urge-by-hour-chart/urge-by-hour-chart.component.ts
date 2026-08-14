@@ -1,28 +1,35 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UrgeHourEntry } from '../../../../../core/analytics/models/analytics.types';
+import { BarChartComponent } from '../../../../../shared/components/charts/bar-chart/bar-chart.component';
+import { ChartDataSeries, ChartConfig } from '../../../../../shared/components/charts/models/chart.models';
 
 @Component({
   selector: 'app-urge-by-hour-chart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, BarChartComponent],
   templateUrl: './urge-by-hour-chart.component.html',
   styleUrls: ['./urge-by-hour-chart.component.scss']
 })
-export class UrgeByHourChartComponent implements OnChanges {
+export class UrgeByHourChartComponent {
   @Input({ required: true }) byHour: UrgeHourEntry[] = [];
-  
-  sortedByHour: UrgeHourEntry[] = [];
-  highestAvg: number | null = null;
 
-  ngOnChanges(): void {
-    this.sortedByHour = [...this.byHour].sort((a, b) => {
-      if (a.avgUrge === null && b.avgUrge === null) return 0;
-      if (a.avgUrge === null) return 1;
-      if (b.avgUrge === null) return -1;
-      return b.avgUrge - a.avgUrge;
-    });
+  get chartSeries(): ChartDataSeries[] {
+    if (!this.byHour?.length) return [];
+    return [{
+      label: 'متوسط الرغبة',
+      data: this.byHour.map(item => ({
+        label: item.label,
+        value: item.avgUrge,
+      })),
+    }];
+  }
 
-    this.highestAvg = this.sortedByHour.length > 0 ? this.sortedByHour[0].avgUrge : null;
+  get chartConfig(): ChartConfig {
+    return {
+      titleAr: 'متوسط الرغبة حسب الساعة',
+      yAxisLabelAr: 'متوسط الرغبة',
+      exportFilename: 'urge_by_hour',
+    };
   }
 }

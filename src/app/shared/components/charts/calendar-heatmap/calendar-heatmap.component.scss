@@ -1,0 +1,116 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+// ── Intensity colour scale ────────────────────────────────────────────────────
+$intensity-light: (0: #eef2ff, 1: #c7d2fe, 2: #818cf8, 3: #4f46e5, 4: #3730a3);
+$intensity-dark:  (0: #1e1e3a, 1: #2e2e6a, 2: #5b5fc7, 3: #818cf8, 4: #c7d2fe);
+
+@each $level, $color in $intensity-light {
+  .intensity-#{$level} { background-color: $color; }
+}
+
+:host-context([data-theme="dark"]) {
+  @each $level, $color in $intensity-dark {
+    .intensity-#{$level} { background-color: $color; }
+  }
+}
+
+// ── Container ─────────────────────────────────────────────────────────────────
+.cal-heatmap {
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  direction: ltr; // grid runs LTR even in RTL context
+}
+
+// ── Month labels ──────────────────────────────────────────────────────────────
+.cal-heatmap__months {
+  display: grid;
+  grid-template-columns: repeat(var(--week-count), minmax(0, 1fr));
+  margin-bottom: 4px;
+  font-size: 0.6875rem;
+  color: var(--color-text-muted, #6b7280);
+}
+
+.cal-heatmap__month-label {
+  white-space: nowrap;
+}
+
+// ── Body ──────────────────────────────────────────────────────────────────────
+.cal-heatmap__body {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+// ── Day-name labels ───────────────────────────────────────────────────────────
+.cal-heatmap__day-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.cal-heatmap__day-label {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted, #6b7280);
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 4px;
+}
+
+// ── Weeks grid ────────────────────────────────────────────────────────────────
+.cal-heatmap__weeks {
+  display: grid;
+  grid-template-columns: repeat(var(--week-count), minmax(0, 1fr));
+  gap: 3px;
+  flex: 1;
+}
+
+.cal-heatmap__week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+// ── Individual cells ──────────────────────────────────────────────────────────
+.cal-heatmap__cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  cursor: default;
+  transition: transform 0.1s;
+  flex-shrink: 0;
+
+  &:hover {
+    transform: scale(1.4);
+    z-index: 1;
+  }
+
+  &--empty {
+    background-color: transparent;
+  }
+}
+
+// ── Legend ────────────────────────────────────────────────────────────────────
+.cal-heatmap__legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0.75rem;
+  justify-content: center;
+}
+
+.cal-heatmap__legend-label {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted, #6b7280);
+}
+
+.cal-heatmap__legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
