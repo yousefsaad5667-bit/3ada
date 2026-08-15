@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UrgeCorrelationResult } from '../../../../../core/analytics/models/analytics.types';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-urge-correlation-card',
   standalone: true,
   imports: [CommonModule],

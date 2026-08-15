@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject , ChangeDetectionStrategy } from '@angular/core';
 import { PatternAnalyticsService } from './services/pattern-analytics.service';
 import { WeekdayChartComponent } from './components/weekday-chart/weekday-chart.component';
 import { HourlyChartComponent } from './components/hourly-chart/hourly-chart.component';
@@ -7,6 +7,7 @@ import { HourWeekdayHeatmapComponent } from './components/hour-weekday-heatmap/h
 import { PatternSummaryCardComponent } from './components/pattern-summary-card/pattern-summary-card.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-patterns',
   standalone: true,
   imports: [

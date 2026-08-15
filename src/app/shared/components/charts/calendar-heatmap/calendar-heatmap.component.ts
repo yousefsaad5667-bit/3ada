@@ -5,7 +5,7 @@ import {
   inject,
   input,
   output,
-} from '@angular/core';
+, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeatmapCell, ChartConfig, ChartExportRequest } from '../models/chart.models';
@@ -36,6 +36,7 @@ const ARABIC_DAY_LABELS = ['ح', 'ن', 'ث', 'ع', 'خ', 'ج', 'س']; // Sun–S
  * Uses HeatmapCell[] input; computes WeekColumn[] grid with month labels.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-calendar-heatmap',
   standalone: true,
   imports: [CommonModule, ChartCardComponent, ChartEmptyStateComponent, ChartLoadingSkeletonComponent],

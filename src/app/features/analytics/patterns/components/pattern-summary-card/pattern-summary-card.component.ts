@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PatternSummaryView, PatternStatus } from '../../models/pattern-view.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-pattern-summary-card',
   standalone: true,
   imports: [CommonModule],

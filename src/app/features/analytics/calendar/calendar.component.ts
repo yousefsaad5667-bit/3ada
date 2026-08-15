@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeatmapComponent } from './components/heatmap/heatmap.component';
 import { MonthlyCalendarComponent } from './components/monthly-calendar/monthly-calendar.component';
@@ -8,6 +8,7 @@ import { CalendarAnalyticsService } from './services/calendar-analytics.service'
 import { DateRangeSelectorComponent } from '../../dashboard/components/date-range-selector/date-range-selector.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-calendar',
   standalone: true,
   imports: [

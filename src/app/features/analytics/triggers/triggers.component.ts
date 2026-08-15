@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject , ChangeDetectionStrategy } from '@angular/core';
 import { TriggerAnalyticsService } from './services/trigger-analytics.service';
 import { TriggerRankingListComponent } from './components/trigger-ranking-list/trigger-ranking-list.component';
 import { TriggerDistributionChartComponent } from './components/trigger-distribution-chart/trigger-distribution-chart.component';
@@ -7,6 +7,7 @@ import { TriggerSearchComponent } from './components/trigger-search/trigger-sear
 import { TriggerSummaryCardComponent } from './components/trigger-summary-card/trigger-summary-card.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-triggers',
   standalone: true,
   imports: [TriggerRankingListComponent, TriggerDistributionChartComponent, TriggerTimelineComponent, TriggerSearchComponent, TriggerSummaryCardComponent],

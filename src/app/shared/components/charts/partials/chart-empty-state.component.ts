@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * T005 — ChartEmptyStateComponent
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
  * Displays Arabic message in both light and dark themes.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-chart-empty-state',
   standalone: true,
   template: `

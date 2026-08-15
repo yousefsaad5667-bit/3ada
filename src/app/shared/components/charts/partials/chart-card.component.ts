@@ -1,4 +1,4 @@
-import { Component, input, output, ElementRef, signal } from '@angular/core';
+import { Component, input, output, ElementRef, signal , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /**
@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
  * Accepts an exportTarget element reference from the parent chart component.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-chart-card',
   standalone: true,
   imports: [CommonModule],

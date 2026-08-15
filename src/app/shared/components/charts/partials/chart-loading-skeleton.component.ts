@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * T006 — ChartLoadingSkeletonComponent
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
  * Used by all chart types while data is loading.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-chart-loading-skeleton',
   standalone: true,
   template: `<div class="chart-skeleton"></div>`,

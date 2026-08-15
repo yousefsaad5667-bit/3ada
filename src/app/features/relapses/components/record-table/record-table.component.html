@@ -1,5 +1,6 @@
 <div class="table-container">
-  <table class="record-table" aria-label="جدول الانتكاسات">
+  <cdk-virtual-scroll-viewport [itemSize]="ROW_HEIGHT" class="table-viewport">
+    <table class="record-table" aria-label="جدول الانتكاسات">
     <thead>
       <tr>
         <th
@@ -36,9 +37,8 @@
         <th>الإجراءات</th>
       </tr>
     </thead>
-    <tbody>
-      @for (record of records; track record.id) {
-        <tr [class.highlight-delete]="pendingDeleteId() === record.id">
+      <tbody>
+        <tr *cdkVirtualFor="let record of records; trackBy: trackById" [class.highlight-delete]="pendingDeleteId() === record.id">
           <td>{{ record.date }}</td>
           <td dir="ltr" class="text-right">
             {{
@@ -92,12 +92,12 @@
             }
           </td>
         </tr>
-      }
       @if (records.length === 0) {
         <tr>
           <td colspan="6" class="empty-cell">لا توجد سجلات.</td>
         </tr>
       }
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </cdk-virtual-scroll-viewport>
 </div>

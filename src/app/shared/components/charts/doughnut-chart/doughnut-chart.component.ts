@@ -7,7 +7,7 @@ import {
   inject,
   input,
   output,
-} from '@angular/core';
+, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartData, ChartOptions } from 'chart.js/auto';
 
@@ -26,6 +26,7 @@ import { exportAsPng, exportAsSvg } from '../utils/chart-export.util';
  * Legend and tooltip identical to PieChartComponent.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-doughnut-chart',
   standalone: true,
   imports: [CommonModule, ChartCardComponent, ChartEmptyStateComponent, ChartLoadingSkeletonComponent],

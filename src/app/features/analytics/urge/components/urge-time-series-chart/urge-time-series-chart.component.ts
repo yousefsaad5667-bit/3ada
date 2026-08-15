@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UrgeTimeSeriesView } from '../../models/urge-view.model';
 import { LineChartComponent } from '../../../../../shared/components/charts/line-chart/line-chart.component';
 import { ChartDataSeries, ChartConfig } from '../../../../../shared/components/charts/models/chart.models';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-urge-time-series-chart',
   standalone: true,
   imports: [CommonModule, LineChartComponent],

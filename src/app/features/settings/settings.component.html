@@ -1,1 +1,22 @@
-<h1>?????????</h1>
+<div class="settings-container" dir="rtl">
+  <h1>الإعدادات</h1>
+  
+  <div class="import-section">
+    <h2>استيراد البيانات</h2>
+    <input type="file" accept=".json" (change)="onFileSelected($event)" #fileInput style="display: none">
+    <button (click)="fileInput.click()">اختر ملف استيراد</button>
+
+    @if (importExportService.importProgress(); as progress) {
+      @if (progress.status !== 'idle') {
+        <div class="progress-indicator">
+          <p>الحالة: {{ progress.status }}</p>
+          <p>التقدم: {{ progress.percentComplete }}%</p>
+          <progress [value]="progress.percentComplete" max="100"></progress>
+          @if (progress.errorMessageAr) {
+            <p class="error" style="color: red;">{{ progress.errorMessageAr }}</p>
+          }
+        </div>
+      }
+    }
+  </div>
+</div>

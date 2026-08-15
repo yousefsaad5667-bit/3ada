@@ -6,7 +6,7 @@ import {
   input,
   output,
   signal,
-} from '@angular/core';
+, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeatmapCell, ChartConfig, ChartExportRequest } from '../models/chart.models';
@@ -22,6 +22,7 @@ import { exportAsPng, exportAsSvgFromDom } from '../utils/chart-export.util';
  * Renders cells with intensity-0 through intensity-4 classes.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-heatmap',
   standalone: true,
   imports: [CommonModule, ChartCardComponent, ChartEmptyStateComponent, ChartLoadingSkeletonComponent],

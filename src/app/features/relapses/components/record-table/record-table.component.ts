@@ -1,14 +1,16 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { RelapseRecord } from '../../../../core/models/relapse-record.model';
 import { SortDir, SortField } from '../../models/record-filter.types';
 
 @Component({
   selector: 'app-record-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ScrollingModule],
   templateUrl: './record-table.component.html',
   styleUrls: ['./record-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecordTableComponent {
   @Input() records: RelapseRecord[] = [];
@@ -21,6 +23,9 @@ export class RecordTableComponent {
   @Output() duplicateRecord = new EventEmitter<string>();
 
   pendingDeleteId = signal<string | null>(null);
+
+  readonly ROW_HEIGHT = 48;
+  trackById = (_: number, r: RelapseRecord) => r.id;
 
   toggleSort(field: SortField) {
     if (this.sortField === field) {
