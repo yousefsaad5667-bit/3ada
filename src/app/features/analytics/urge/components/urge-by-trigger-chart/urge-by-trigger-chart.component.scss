@@ -14,7 +14,7 @@
     margin: 0;
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--text-color, #333333);
+    color: var(--color-text-primary, #333333);
   }
 }
 
@@ -56,7 +56,7 @@
 
   .keyword {
     font-weight: 600;
-    color: var(--text-color, #374151);
+    color: var(--color-text-primary, #374151);
   }
 
   .limited-sample-badge {
@@ -81,7 +81,7 @@
 
   .stat-label {
     font-size: 0.75rem;
-    color: var(--text-color-secondary, #6b7280);
+    color: var(--color-text-secondary, #6b7280);
   }
 
   .stat-value {
@@ -101,7 +101,7 @@
 .empty-state {
   padding: 2rem;
   text-align: center;
-  color: var(--text-color-secondary, #6b7280);
+  color: var(--color-text-secondary, #6b7280);
   background: var(--surface-ground, #fafafa);
   border-radius: var(--border-radius-md, 8px);
 }

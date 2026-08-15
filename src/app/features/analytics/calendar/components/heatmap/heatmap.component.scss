@@ -9,7 +9,7 @@
 .empty-state {
   text-align: center;
   padding: 2rem;
-  color: var(--text-secondary, #666);
+  color: var(--color-text-secondary, #666);
 }
 
 .months-header {
@@ -25,7 +25,7 @@
 .month-label {
   position: absolute;
   font-size: 0.75rem;
-  color: var(--text-secondary, #666);
+  color: var(--color-text-secondary, #666);
   white-space: nowrap;
 }
 
@@ -39,7 +39,7 @@
   flex-direction: column;
   justify-content: space-between;
   font-size: 0.75rem;
-  color: var(--text-secondary, #666);
+  color: var(--color-text-secondary, #666);
   padding-top: 4px; /* Align with first cell */
   padding-bottom: 4px; /* Align with last cell */
   height: 112px; /* 7 cells * 14px + 6 gaps * 2px = 110px approximately */
@@ -78,7 +78,7 @@
   }
   
   &.today {
-    border: 1px solid var(--text-primary, #24292e);
+    border: 1px solid var(--color-text-primary, #24292e);
   }
 
   /* We expect parent application to define these vars or we use fallbacks */

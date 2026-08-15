@@ -1,4 +1,4 @@
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
-shell commands, and other important information, read `specs/013-final-polish/plan.md`
+shell commands, and other important information, read `specs/014-ui-ux-refinements/plan.md`
 <!-- SPECKIT END -->

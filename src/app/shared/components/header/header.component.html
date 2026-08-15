@@ -10,7 +10,8 @@
     <div class="app-name">{{ appName }}</div>
   </div>
 
-  <div class="header-end">
+  <div class="header-end" style="display: flex; gap: 1rem; align-items: center;">
+    <app-date-range-selector></app-date-range-selector>
     <button class="theme-toggle" (click)="onToggleTheme()" aria-label="تبديل المظهر">
       @if (themeService.currentTheme() === 'dark') {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

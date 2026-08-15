@@ -1,12 +1,11 @@
 <div class="dashboard-container">
   <div class="dashboard-header">
     <h2>لوحة التحكم</h2>
-    <app-date-range-selector></app-date-range-selector>
   </div>
 
-  <div class="dashboard-grid" cdkDropList (cdkDropListDropped)="onDrop($event)">
+  <div class="dashboard-grid">
     @for (card of cards(); track card.id) {
-      <div class="dashboard-grid-item" cdkDrag>
+      <div class="dashboard-grid-item">
         @if (card.visible) {
           <app-dashboard-card-shell
             [titleAr]="card.titleAr"

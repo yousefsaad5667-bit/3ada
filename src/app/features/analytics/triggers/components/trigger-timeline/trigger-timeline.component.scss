@@ -15,7 +15,7 @@
   .chart-title {
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--text-primary, #111827);
+    color: var(--color-text-primary, #111827);
     margin: 0;
   }
 }
@@ -53,13 +53,13 @@
   gap: 0.5rem;
 
   .label {
-    color: var(--text-secondary, #4b5563);
+    color: var(--color-text-secondary, #4b5563);
     font-weight: 500;
   }
 
   .value {
     font-weight: 600;
-    color: var(--text-primary, #111827);
+    color: var(--color-text-primary, #111827);
 
     &--peak {
       color: var(--peak-text, #ea580c);
@@ -105,7 +105,7 @@
   align-items: flex-end;
   gap: 0.5rem;
   height: 200px;
-  min-width: 100%;
+  min-width: max-content;
   padding-top: 1.5rem;
 }
 
@@ -179,7 +179,7 @@
 
 .date-label {
   font-size: 0.6875rem;
-  color: var(--text-muted, #6b7280);
+  color: var(--color-text-muted, #6b7280);
   text-align: center;
   writing-mode: horizontal-tb;
   white-space: nowrap;
@@ -194,7 +194,7 @@
   justify-content: center;
   align-items: center;
   padding: 3rem 1rem;
-  color: var(--text-muted, #9ca3af);
+  color: var(--color-text-muted, #9ca3af);
   font-size: 0.875rem;
   text-align: center;
   gap: 0.5rem;
@@ -203,7 +203,7 @@
 @media (prefers-color-scheme: dark) {
   .chart-title,
   .summary-item .value {
-    color: var(--text-primary-dark, #f9fafb);
+    color: var(--color-text-primary-dark, #f9fafb);
   }
 
   .selected-keyword-badge {

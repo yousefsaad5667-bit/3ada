@@ -1,11 +1,9 @@
 import { Component, OnInit, inject , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { DashboardCardDescriptor } from './models/dashboard-card-descriptor.model';
 import { PlaceholderCardAComponent } from './components/placeholder-cards/placeholder-card-a/placeholder-card-a.component';
 import { PlaceholderCardBComponent } from './components/placeholder-cards/placeholder-card-b/placeholder-card-b.component';
 import { DashboardCardShellComponent } from './components/dashboard-card-shell/dashboard-card-shell.component';
-import { DateRangeSelectorComponent } from './components/date-range-selector/date-range-selector.component';
 import { DashboardLayoutService } from './services/dashboard-layout.service';
 import { DashboardCardPlaceholderComponent } from './components/dashboard-card-placeholder/dashboard-card-placeholder.component';
 import { DailySeriesCardComponent } from '../analytics/time-series/components/daily-series-card/daily-series-card.component';
@@ -16,21 +14,21 @@ import { TrendSummaryCardComponent } from '../analytics/time-series/components/t
 import { HeatmapComponent } from '../analytics/calendar/components/heatmap/heatmap.component';
 import { MonthlyCalendarComponent } from '../analytics/calendar/components/monthly-calendar/monthly-calendar.component';
 import { DaySummaryCardComponent } from '../analytics/calendar/components/day-summary-card/day-summary-card.component';
-import { WeekdayChartComponent } from '../analytics/patterns/components/weekday-chart/weekday-chart.component';
-import { HourlyChartComponent } from '../analytics/patterns/components/hourly-chart/hourly-chart.component';
-import { PeriodSplitCardComponent } from '../analytics/patterns/components/period-split-card/period-split-card.component';
-import { HourWeekdayHeatmapComponent } from '../analytics/patterns/components/hour-weekday-heatmap/hour-weekday-heatmap.component';
-import { PatternSummaryCardComponent } from '../analytics/patterns/components/pattern-summary-card/pattern-summary-card.component';
-import { TriggerRankingListComponent } from '../analytics/triggers/components/trigger-ranking-list/trigger-ranking-list.component';
-import { TriggerDistributionChartComponent } from '../analytics/triggers/components/trigger-distribution-chart/trigger-distribution-chart.component';
-import { TriggerTimelineComponent } from '../analytics/triggers/components/trigger-timeline/trigger-timeline.component';
-import { TriggerSummaryCardComponent } from '../analytics/triggers/components/trigger-summary-card/trigger-summary-card.component';
+import { WeekdayChartCardComponent } from '../analytics/patterns/components/weekday-chart-card/weekday-chart-card.component';
+import { HourlyChartCardComponent } from '../analytics/patterns/components/hourly-chart-card/hourly-chart-card.component';
+import { PeriodSplitCardWrapperComponent } from '../analytics/patterns/components/period-split-card-wrapper/period-split-card-wrapper.component';
+import { HourWeekdayHeatmapCardComponent } from '../analytics/patterns/components/hour-weekday-heatmap-card/hour-weekday-heatmap-card.component';
+import { PatternSummaryCardWrapperComponent } from '../analytics/patterns/components/pattern-summary-card-wrapper/pattern-summary-card-wrapper.component';
+import { TriggerRankingCardComponent } from '../analytics/triggers/components/trigger-ranking-list-card/trigger-ranking-card.component';
+import { TriggerDistributionCardComponent } from '../analytics/triggers/components/trigger-distribution-card/trigger-distribution-card.component';
+import { TriggerTimelineCardComponent } from '../analytics/triggers/components/trigger-timeline-card/trigger-timeline-card.component';
+import { TriggerSummaryCardWrapperComponent } from '../analytics/triggers/components/trigger-summary-card-wrapper/trigger-summary-card-wrapper.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, DragDropModule, DashboardCardShellComponent, DateRangeSelectorComponent, DashboardCardPlaceholderComponent],
+  imports: [CommonModule, DashboardCardShellComponent, DashboardCardPlaceholderComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -89,55 +87,55 @@ export class DashboardComponent implements OnInit {
     {
       id: 'patterns-weekday-chart',
       titleAr: 'توزيع أيام الأسبوع',
-      component: WeekdayChartComponent,
+      component: WeekdayChartCardComponent,
       defaultOrder: 8
     },
     {
       id: 'patterns-hourly-chart',
       titleAr: 'توزيع ساعات اليوم',
-      component: HourlyChartComponent,
+      component: HourlyChartCardComponent,
       defaultOrder: 9
     },
     {
       id: 'patterns-period-split',
       titleAr: 'مقارنة الصباح والمساء',
-      component: PeriodSplitCardComponent,
+      component: PeriodSplitCardWrapperComponent,
       defaultOrder: 10
     },
     {
       id: 'patterns-heatmap',
       titleAr: 'خريطة الوقت والأسبوع',
-      component: HourWeekdayHeatmapComponent,
+      component: HourWeekdayHeatmapCardComponent,
       defaultOrder: 11
     },
     {
       id: 'patterns-summary',
       titleAr: 'أبرز أوقات النشاط',
-      component: PatternSummaryCardComponent,
+      component: PatternSummaryCardWrapperComponent,
       defaultOrder: 12
     },
     {
       id: 'triggers-ranking',
       titleAr: 'أكثر الأسباب تكراراً',
-      component: TriggerRankingListComponent,
+      component: TriggerRankingCardComponent,
       defaultOrder: 13
     },
     {
       id: 'triggers-distribution',
       titleAr: 'توزيع المحفزات',
-      component: TriggerDistributionChartComponent,
+      component: TriggerDistributionCardComponent,
       defaultOrder: 14
     },
     {
       id: 'triggers-timeline',
       titleAr: 'مسار المحفز المحدد',
-      component: TriggerTimelineComponent,
+      component: TriggerTimelineCardComponent,
       defaultOrder: 15
     },
     {
       id: 'triggers-summary',
       titleAr: 'ملخص المحفزات',
-      component: TriggerSummaryCardComponent,
+      component: TriggerSummaryCardWrapperComponent,
       defaultOrder: 16
     }
   ];
@@ -146,12 +144,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.layoutService.registerCards(this.CARD_REGISTRY);
-  }
-
-  onDrop(event: CdkDragDrop<any[]>) {
-    const currentCards = [...this.cards()];
-    moveItemInArray(currentCards, event.previousIndex, event.currentIndex);
-    this.layoutService.reorderCards(currentCards.map(c => c.id));
   }
 
   onHideCard(id: string) {

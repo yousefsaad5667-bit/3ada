@@ -8,13 +8,14 @@
   margin: 0 0 1.5rem 0;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-primary, #111827);
+  color: var(--color-text-primary, #111827);
 }
 
 .chart-content {
   flex: 1;
   display: flex;
   min-height: 200px;
+  overflow-x: auto;
 }
 
 .bars-container {
@@ -64,7 +65,7 @@
 
 .day-label {
   font-size: 0.75rem;
-  color: var(--text-secondary, #6b7280);
+  color: var(--color-text-secondary, #6b7280);
   text-align: center;
   white-space: nowrap;
 }
@@ -103,13 +104,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted, #9ca3af);
+  color: var(--color-text-muted, #9ca3af);
   font-size: 0.875rem;
 }
 
 @media (prefers-color-scheme: dark) {
-  .chart-title { color: var(--text-primary-dark, #f9fafb); }
+  .chart-title { color: var(--color-text-primary-dark, #f9fafb); }
   .bar-track { background-color: var(--bg-secondary-dark, #374151); }
   .bar-fill { background-color: var(--primary-dark-muted, #1e40af); }
-  .day-label { color: var(--text-secondary-dark, #9ca3af); }
+  .day-label { color: var(--color-text-secondary-dark, #9ca3af); }
 }

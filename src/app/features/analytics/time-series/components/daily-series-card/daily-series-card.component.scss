@@ -16,12 +16,12 @@
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
     font-size: 0.75rem;
-    color: var(--text-muted, #64748b);
+    color: var(--color-text-muted, #64748b);
     cursor: pointer;
 
     &:hover {
       background: var(--bg-hover, #f8fafc);
-      color: var(--text-color, #334155);
+      color: var(--color-text-primary, #334155);
     }
   }
 }
