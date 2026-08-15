@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DatePreset } from '../../models/record-filter.types';
@@ -9,6 +9,7 @@ import { DatePreset } from '../../models/record-filter.types';
   imports: [CommonModule, FormsModule],
   templateUrl: './record-filter-bar.component.html',
   styleUrls: ['./record-filter-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecordFilterBarComponent {
   @Input() searchQuery = '';

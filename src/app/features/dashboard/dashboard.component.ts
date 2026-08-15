@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import { DashboardCardDescriptor } from './models/dashboard-card-descriptor.model';
@@ -27,6 +27,7 @@ import { TriggerTimelineComponent } from '../analytics/triggers/components/trigg
 import { TriggerSummaryCardComponent } from '../analytics/triggers/components/trigger-summary-card/trigger-summary-card.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, DragDropModule, DashboardCardShellComponent, DateRangeSelectorComponent, DashboardCardPlaceholderComponent],

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UrgeAnalyticsService } from './services/urge-analytics.service';
 import { UrgeSummaryCardComponent } from './components/urge-summary-card/urge-summary-card.component';
@@ -10,6 +10,7 @@ import { UrgeByTriggerChartComponent } from './components/urge-by-trigger-chart/
 import { UrgeCorrelationCardComponent } from './components/urge-correlation-card/urge-correlation-card.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-urge',
   standalone: true,
   imports: [

@@ -1,9 +1,10 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal , ChangeDetectionStrategy } from '@angular/core';
 import { TimeSeriesAnalyticsService } from '../../services/time-series-analytics.service';
 import { TimeSeriesChartComponent } from '../time-series-chart/time-series-chart.component';
 import { TimeSeriesTableComponent } from '../time-series-table/time-series-table.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-daily-series-card',
   standalone: true,
   imports: [TimeSeriesChartComponent, TimeSeriesTableComponent],

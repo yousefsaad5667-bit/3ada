@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UrgeTriggerEntry } from '../../../../../core/analytics/models/analytics.types';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-urge-by-trigger-chart',
   standalone: true,
   imports: [CommonModule],
@@ -11,4 +12,8 @@ import { UrgeTriggerEntry } from '../../../../../core/analytics/models/analytics
 })
 export class UrgeByTriggerChartComponent {
   @Input({ required: true }) byTrigger: UrgeTriggerEntry[] = [];
+
+  trackByIndex(index: number): number {
+    return index;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DailySeriesCardComponent } from './components/daily-series-card/daily-series-card.component';
 import { PeriodSeriesCardComponent } from './components/period-series-card/period-series-card.component';
@@ -8,6 +8,7 @@ import { TrendSummaryCardComponent } from './components/trend-summary-card/trend
 import { DateRangeSelectorComponent } from '../../dashboard/components/date-range-selector/date-range-selector.component';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-time-series',
   standalone: true,
   imports: [

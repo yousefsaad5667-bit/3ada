@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DistributionEntry } from '../../../../../core/analytics/models/analytics.types';
 import { BarChartComponent } from '../../../../../shared/components/charts/bar-chart/bar-chart.component';
 import { ChartDataSeries, ChartConfig } from '../../../../../shared/components/charts/models/chart.models';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-urge-distribution-chart',
   standalone: true,
   imports: [CommonModule, BarChartComponent],

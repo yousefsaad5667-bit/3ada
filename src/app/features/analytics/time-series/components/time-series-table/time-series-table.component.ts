@@ -1,9 +1,10 @@
-import { Component, Input, computed, inject, signal } from '@angular/core';
+import { Component, Input, computed, inject, signal , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimeSeriesAnalyticsService } from '../../services/time-series-analytics.service';
 import { TimeSeriesDatasetView, TimeSeriesTableRow } from '../../models/time-series-view.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-time-series-table',
   standalone: true,
   imports: [CommonModule],

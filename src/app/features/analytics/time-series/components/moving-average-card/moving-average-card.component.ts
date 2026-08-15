@@ -1,9 +1,10 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject , ChangeDetectionStrategy } from '@angular/core';
 import { TimeSeriesAnalyticsService } from '../../services/time-series-analytics.service';
 import { TimeSeriesChartComponent } from '../time-series-chart/time-series-chart.component';
 import { TimeSeriesDatasetView } from '../../models/time-series-view.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-moving-average-card',
   standalone: true,
   imports: [TimeSeriesChartComponent],

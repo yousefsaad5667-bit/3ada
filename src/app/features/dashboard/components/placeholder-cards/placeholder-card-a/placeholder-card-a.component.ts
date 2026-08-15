@@ -1,9 +1,10 @@
-import { Component, signal, OnInit, inject } from '@angular/core';
+import { Component, signal, OnInit, inject , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardState } from '../../../models/dashboard-card.model';
 import { DashboardFilterService } from '../../../services/dashboard-filter.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-placeholder-card-a',
   standalone: true,
   imports: [CommonModule],

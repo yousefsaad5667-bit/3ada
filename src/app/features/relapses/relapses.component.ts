@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { RelapseRecordRepository } from '../../core/services/relapse-record.repository';
@@ -24,6 +24,7 @@ import { DatePreset, SortField, SortDir, getDateRangeBounds } from './models/rec
   ],
   templateUrl: './relapses.component.html',
   styleUrls: ['./relapses.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RelapsesComponent {
   private repository = inject(RelapseRecordRepository);
@@ -33,6 +34,8 @@ export class RelapsesComponent {
   _datePreset = signal<DatePreset>('all');
   _sortField = signal<SortField>('date');
   _sortDir = signal<SortDir>('desc');
+
+  private searchDebounce: ReturnType<typeof setTimeout> | null = null;
 
   filteredRecords = computed(() => {
     let records = [...this.repository.records()];
@@ -79,7 +82,12 @@ export class RelapsesComponent {
   noMatch = computed(() => !this.isEmpty() && this.filteredRecords().length === 0);
 
   updateSearch(q: string) {
-    this._searchQuery.set(q);
+    if (this.searchDebounce) {
+      clearTimeout(this.searchDebounce);
+    }
+    this.searchDebounce = setTimeout(() => {
+      this._searchQuery.set(q);
+    }, 150);
   }
 
   updateDatePreset(p: DatePreset) {

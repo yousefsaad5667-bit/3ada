@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HourWeekdayHeatmapView, PatternStatus, HourWeekdayCellView } from '../../models/pattern-view.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-hour-weekday-heatmap',
   standalone: true,
   imports: [CommonModule],

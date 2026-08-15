@@ -100,7 +100,7 @@ export class BarChartComponent extends BaseChartDirective implements AfterViewIn
       })),
     };
 
-    const options: ChartOptions<'bar'> = {
+    const options: ChartOptions = {
       responsive: true,
       maintainAspectRatio: true,
       aspectRatio: cfg.aspectRatio ?? 2,

@@ -1,23 +1,31 @@
-import { Component, ElementRef, OnDestroy, effect, input, viewChild } from '@angular/core';
+import { Component, ElementRef, effect, input, viewChild, ChangeDetectionStrategy, inject, DestroyRef } from '@angular/core';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { TimeSeriesDatasetView } from '../../models/time-series-view.model';
 
 Chart.register(...registerables);
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-time-series-chart',
   templateUrl: './time-series-chart.component.html',
   styleUrl: './time-series-chart.component.scss'
 })
-export class TimeSeriesChartComponent implements OnDestroy {
+export class TimeSeriesChartComponent {
   dataset = input.required<TimeSeriesDatasetView>();
   type = input<'line' | 'bar'>('bar');
   
   chartCanvas = viewChild<ElementRef<HTMLCanvasElement>>('chartCanvas');
 
   private chartInstance: Chart | null = null;
+  private destroyRef = inject(DestroyRef);
 
   constructor() {
+    this.destroyRef.onDestroy(() => {
+      if (this.chartInstance) {
+        this.chartInstance.destroy();
+      }
+    });
+
     effect(() => {
       const data = this.dataset();
       const chartType = this.type();
@@ -27,12 +35,6 @@ export class TimeSeriesChartComponent implements OnDestroy {
         this.renderChart(canvas.nativeElement, data, chartType);
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    if (this.chartInstance) {
-      this.chartInstance.destroy();
-    }
   }
 
   private renderChart(canvasEl: HTMLCanvasElement, data: TimeSeriesDatasetView, type: 'line' | 'bar'): void {

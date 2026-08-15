@@ -7,7 +7,7 @@ import {
   inject,
   input,
   output,
-} from '@angular/core';
+, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartData, ChartOptions } from 'chart.js/auto';
 
@@ -25,6 +25,7 @@ import { exportAsPng, exportAsSvg } from '../utils/chart-export.util';
  * Thin wrapper that forces indexAxis: 'y', rendering horizontal bars.
  */
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-horizontal-bar-chart',
   standalone: true,
   imports: [CommonModule, ChartCardComponent, ChartEmptyStateComponent, ChartLoadingSkeletonComponent],

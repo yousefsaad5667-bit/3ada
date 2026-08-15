@@ -1,4 +1,4 @@
-import { getUrgeAnalysis, getUrgeByHour, getUrgeByWeekday } from './urge.engine';
+import { getUrgeAnalysis, getUrgeByHour, getUrgeByWeekday, getUrgeCorrelation } from './urge.engine';
 import { RelapseRecord } from '../../models/relapse-record.model';
 
 describe('Urge Engine', () => {
@@ -104,7 +104,6 @@ describe('Urge Engine', () => {
         { id: '1', date: '2026-07-01', count: 1, urgeLevel: 5 } as any
       ];
       const range = { from: '2026-01-01', to: '2026-12-31' };
-      const { getUrgeCorrelation } = require('./urge.engine');
       
       const result = getUrgeCorrelation(records, range);
       expect(result.direction).toBe('insufficient-data');
@@ -118,13 +117,12 @@ describe('Urge Engine', () => {
       for (let i = 1; i <= 10; i++) {
         records.push({
           id: `w${i}`,
-          date: `2026-0${i < 10 ? '0' + i : i}-01`, // Rough weekly spread for test purposes
+          date: `2026-${i < 10 ? '0' + i : i}-01`, // Rough weekly spread for test purposes
           count: i, // Increasing relapse count
           urgeLevel: Math.min(i, 10) // Increasing urge
         } as any);
       }
       const range = { from: '2026-01-01', to: '2026-12-31' };
-      const { getUrgeCorrelation } = require('./urge.engine');
       
       const result = getUrgeCorrelation(records, range);
       expect(result.direction).toBe('positive');

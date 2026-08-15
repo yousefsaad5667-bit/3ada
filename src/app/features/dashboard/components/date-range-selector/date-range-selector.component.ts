@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardFilterService } from '../../services/dashboard-filter.service';
 import { DatePreset } from '../../../../core/analytics';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-date-range-selector',
   standalone: true,
   imports: [CommonModule],

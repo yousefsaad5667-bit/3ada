@@ -1,8 +1,9 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ViewContainerRef, OnInit, Type, effect, signal, ComponentRef, Injector } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ViewContainerRef, OnInit, Type, effect, signal, ComponentRef, Injector, DestroyRef , ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardState } from '../../models/dashboard-card.model';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-dashboard-card-shell',
   standalone: true,
   imports: [CommonModule],
@@ -21,7 +22,7 @@ export class DashboardCardShellComponent implements OnInit {
   state = signal<CardState>('loading');
   private componentRef?: ComponentRef<unknown>;
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector, private destroyRef: DestroyRef) {}
 
   ngOnInit() {
     this.componentRef = this.container.createComponent(this.componentType);
@@ -29,12 +30,13 @@ export class DashboardCardShellComponent implements OnInit {
     // Read the signal from the component instance if it exists
     const instance = this.componentRef.instance as { cardState?: () => CardState; onRetry?: () => void };
     if (instance.cardState) {
-       effect(() => {
+       const eff = effect(() => {
           const stateFn = instance.cardState;
           if (stateFn) {
             this.state.set(stateFn());
           }
-       }, { injector: this.injector });
+       }, { injector: this.injector, manualCleanup: true });
+       this.destroyRef.onDestroy(() => eff.destroy());
     } else {
        // Fallback for components that don't implement the contract
        this.state.set('data');

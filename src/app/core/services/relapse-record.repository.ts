@@ -1,6 +1,7 @@
 import { Injectable, signal, Signal, inject } from '@angular/core';
 import { StorageService } from './storage.service';
 import { RelapseRecord } from '../models/relapse-record.model';
+import { AnalyticsMemoService } from '../analytics/services/analytics-memo.service';
 import { STORAGE_KEYS } from '../constants/storage.constants';
 import { validateRelapseRecord } from '../validators/relapse-record.validator';
 import { ValidationResult } from '../models/validation-result.model';
@@ -8,6 +9,7 @@ import { ValidationResult } from '../models/validation-result.model';
 @Injectable({ providedIn: 'root' })
 export class RelapseRecordRepository {
   private storage = inject(StorageService);
+  private memoService = inject(AnalyticsMemoService);
 
   private readonly _records = signal<RelapseRecord[]>([]);
   readonly records: Signal<RelapseRecord[]> = this._records.asReadonly();
@@ -72,6 +74,7 @@ export class RelapseRecordRepository {
     }
 
     this._records.set(updatedRecords);
+    this.memoService.clearAll();
 
     return { valid: true, value: newRecord, errors: [] };
   }
@@ -125,6 +128,7 @@ export class RelapseRecordRepository {
     }
 
     this._records.set(updatedRecords);
+    this.memoService.clearAll();
 
     return { valid: true, value: updatedRecord, errors: [] };
   }
@@ -139,6 +143,7 @@ export class RelapseRecordRepository {
     const updatedRecords = currentRecords.filter(r => r.id !== id);
     this.storage.set(STORAGE_KEYS.RELAPSE_RECORDS, updatedRecords);
     this._records.set(updatedRecords);
+    this.memoService.clearAll();
 
     return true;
   }

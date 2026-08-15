@@ -54,7 +54,16 @@ describe('UrgeComponent', () => {
   });
 
   it('should display data view when status is data', () => {
-    mockService.state.set({ status: 'data', summary: {}, timeSeries: { entries: [] } });
+    mockService.state.set({
+      status: 'data',
+      summary: {},
+      timeSeries: { entries: [] },
+      distribution: { topTriggers: [] },
+      byHour: [],
+      byWeekday: [],
+      byTrigger: [],
+      correlation: { direction: 'neutral', pearsonR: 0, explanationAr: '', weeklyBucketsCount: 0 }
+    });
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.analytics-content')).toBeTruthy();
