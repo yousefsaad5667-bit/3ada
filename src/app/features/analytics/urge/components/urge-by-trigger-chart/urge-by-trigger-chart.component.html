@@ -3,7 +3,7 @@
     <h3 class="chart-title">أعلى المحفزات ارتباطاً بالرغبة الشديدة</h3>
   </div>
 
-  <div class="list-container" *ngIf="byTrigger?.length > 0; else emptyState">
+  <div class="list-container" *ngIf="byTrigger && byTrigger.length > 0; else emptyState">
     <div class="list-row" *ngFor="let item of byTrigger; let i = index; trackBy: trackByIndex">
       
       <div class="rank-badge">{{ i + 1 }}</div>
