@@ -6,6 +6,13 @@
   box-shadow: var(--shadow-sm);
 }
 
+.table-viewport {
+  height: 60vh;
+  min-height: 300px;
+  max-height: 70vh;
+  width: 100%;
+}
+
 .record-table {
   width: 100%;
   border-collapse: collapse;
