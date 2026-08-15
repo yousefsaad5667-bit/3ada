@@ -10,8 +10,8 @@ describe('PatternAnalyticsService', () => {
   let filterServiceSpy: jasmine.SpyObj<DashboardFilterService>;
   let repositorySpy: jasmine.SpyObj<RelapseRecordRepository>;
   
-  let recordsSignal = signal<RelapseRecord[]>([]);
-  let filterSignal = signal<any>({ preset: 'last7', startDate: new Date('2020-01-01'), endDate: new Date('2026-12-31') });
+  const recordsSignal = signal<RelapseRecord[]>([]);
+  const filterSignal = signal<any>({ preset: 'last7', startDate: new Date('2020-01-01'), endDate: new Date('2026-12-31') });
 
   beforeEach(() => {
     recordsSignal.set([]);

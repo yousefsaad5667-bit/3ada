@@ -42,6 +42,7 @@ module.exports = defineConfig([
       ],
       "@angular-eslint/prefer-standalone": "error",
       "@typescript-eslint/no-explicit-any": "error",
+      "no-console": "error",
     },
   },
   {

@@ -33,8 +33,8 @@
     color: var(--color-text-primary);
     font-size: var(--font-size-md);
     transition:
-      border-color 0.2s,
-      box-shadow 0.2s;
+      border-color var(--transition-normal),
+      box-shadow var(--transition-normal);
 
     &:focus {
       outline: none;
@@ -57,7 +57,7 @@
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition-normal);
 
     &:hover {
       background-color: var(--color-bg-secondary);

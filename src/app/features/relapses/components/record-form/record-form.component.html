@@ -1,4 +1,4 @@
-<div class="dialog-container">
+<div class="dialog-container" cdkTrapFocus cdkTrapFocusAutoCapture>
   <div class="dialog-header">
     <h2 class="dialog-title">{{ mode === 'edit' ? 'تعديل سجل' : 'إضافة سجل' }}</h2>
   </div>
@@ -13,7 +13,7 @@
         [class.is-invalid]="validationErrors()['date']"
       />
       @if (validationErrors()['date']) {
-        <div class="error-text">{{ validationErrors()['date'] }}</div>
+        <div class="error-text" aria-live="polite">{{ validationErrors()['date'] }}</div>
       }
     </div>
 
@@ -27,7 +27,7 @@
           [class.is-invalid]="validationErrors()['time']"
         />
         @if (validationErrors()['time']) {
-          <div class="error-text">{{ validationErrors()['time'] }}</div>
+          <div class="error-text" aria-live="polite">{{ validationErrors()['time'] }}</div>
         }
       </div>
       <div class="form-group half-width">
@@ -38,7 +38,7 @@
           <option value="pm">مساءً</option>
         </select>
         @if (validationErrors()['ampm']) {
-          <div class="error-text">{{ validationErrors()['ampm'] }}</div>
+          <div class="error-text" aria-live="polite">{{ validationErrors()['ampm'] }}</div>
         }
       </div>
     </div>
@@ -54,7 +54,7 @@
           [class.is-invalid]="validationErrors()['count']"
         />
         @if (validationErrors()['count']) {
-          <div class="error-text">{{ validationErrors()['count'] }}</div>
+          <div class="error-text" aria-live="polite">{{ validationErrors()['count'] }}</div>
         }
       </div>
       <div class="form-group half-width">
@@ -68,7 +68,7 @@
           [class.is-invalid]="validationErrors()['urgeLevel']"
         />
         @if (validationErrors()['urgeLevel']) {
-          <div class="error-text">{{ validationErrors()['urgeLevel'] }}</div>
+          <div class="error-text" aria-live="polite">{{ validationErrors()['urgeLevel'] }}</div>
         }
       </div>
     </div>
@@ -87,7 +87,7 @@
         {{ form.value.reason?.length ?? 0 }} / 500
       </div>
       @if (validationErrors()['reason']) {
-        <div class="error-text">{{ validationErrors()['reason'] }}</div>
+        <div class="error-text" aria-live="polite">{{ validationErrors()['reason'] }}</div>
       }
     </div>
 
@@ -105,7 +105,7 @@
         {{ form.value.notes?.length ?? 0 }} / 1000
       </div>
       @if (validationErrors()['notes']) {
-        <div class="error-text">{{ validationErrors()['notes'] }}</div>
+        <div class="error-text" aria-live="polite">{{ validationErrors()['notes'] }}</div>
       }
     </div>
 

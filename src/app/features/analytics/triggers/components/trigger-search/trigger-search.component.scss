@@ -26,7 +26,7 @@
   background-color: var(--input-bg, #ffffff);
   border: 1px solid var(--border-color, #d1d5db);
   border-radius: 8px;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
   outline: none;
 
   &::placeholder {

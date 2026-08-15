@@ -9,7 +9,7 @@
     <app-chart-empty-state />
   } @else {
     <div class="doughnut-chart__canvas-wrapper">
-      <canvas #chartCanvas></canvas>
+      <canvas #chartCanvas role="img" [attr.aria-label]="'??? ?????: ' + titleAr"><p class="sr-only">??? ????? ???? {{ titleAr }}</p></canvas>
     </div>
   }
 

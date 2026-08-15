@@ -6,7 +6,7 @@ import {
   effect,
   inject,
   input,
-  output,
+  output, OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartData, ChartOptions } from 'chart.js/auto';
@@ -32,7 +32,7 @@ import { exportAsPng, exportAsSvg } from '../utils/chart-export.util';
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss'],
 })
-export class LineChartComponent extends BaseChartDirective implements AfterViewInit {
+export class LineChartComponent extends BaseChartDirective implements AfterViewInit, OnDestroy {
   @ViewChild('chartCanvas') canvasRef!: ElementRef<HTMLCanvasElement>;
 
   // Inputs
@@ -147,7 +147,7 @@ export class LineChartComponent extends BaseChartDirective implements AfterViewI
   private setupResizeObserver(): void {
     const container = this.canvasRef?.nativeElement?.parentElement;
     if (!container) return;
-    this.resizeObserver = new ResizeObserver(() => this.resizeChart());
+    this.resizeObserver = new ResizeObserver(() => { this.resizeChart(); });
     this.resizeObserver.observe(container);
   }
 

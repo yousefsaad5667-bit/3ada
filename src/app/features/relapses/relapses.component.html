@@ -5,11 +5,13 @@
   </div>
 
   <div class="page-content">
-    @if (isEmpty()) {
+    @if (hasError()) {
+      <div class="error-state" style="text-align: center; padding: 2rem; background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+        <p style="color: var(--color-error); font-weight: 500; margin-bottom: 1rem;">حدث خطأ أثناء تحميل السجلات. قد تكون البيانات تالفة.</p>
+      </div>
+    } @else if (isEmpty()) {
       <app-record-empty-state mode="empty" (addRecord)="openAddDialog()"> </app-record-empty-state>
-    }
-
-    @if (!isEmpty()) {
+    } @else {
       <div>
         <app-record-filter-bar
           [searchQuery]="_searchQuery()"
@@ -22,9 +24,7 @@
 
         @if (noMatch()) {
           <app-record-empty-state mode="no-match"> </app-record-empty-state>
-        }
-
-        @if (!noMatch()) {
+        } @else {
           <app-record-table
             [records]="filteredRecords()"
             [sortField]="_sortField()"

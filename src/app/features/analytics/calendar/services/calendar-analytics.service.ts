@@ -129,7 +129,7 @@ export class CalendarAnalyticsService {
 
     const weeks: HeatmapWeek[] = [];
     const monthLabels: MonthLabel[] = [];
-    let currentDate = new Date(startDate);
+    const currentDate = new Date(startDate);
     let weekIndex = 0;
     let lastMonthSeen = -1;
 
@@ -181,7 +181,7 @@ export class CalendarAnalyticsService {
     const days: CalendarDay[] = [];
     let hasActivity = false;
 
-    let current = new Date(firstDay);
+    const current = new Date(firstDay);
     while (current <= lastDay) {
       const isoDate = formatISO(current);
       const day = this.buildCalendarDay(records, entryMap, isoDate, bounds);

@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { A11yModule } from '@angular/cdk/a11y';
 import { RelapseRecord } from '../../../../core/models/relapse-record.model';
 import { validateRelapseRecord } from '../../../../core/validators/relapse-record.validator';
 import { CommonModule } from '@angular/common';
@@ -18,7 +19,7 @@ export interface RecordFormDialogResult {
 @Component({
   selector: 'app-record-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, A11yModule],
   templateUrl: './record-form.component.html',
   styleUrls: ['./record-form.component.scss'],
 })

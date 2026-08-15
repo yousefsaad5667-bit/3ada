@@ -57,7 +57,7 @@
   aspect-ratio: 1;
   border-radius: 4px;
   background-color: var(--heatmap-none, #ebedf0);
-  transition: opacity 0.2s, background-color 0.3s;
+  transition: opacity var(--transition-normal), background-color var(--transition-normal);
   cursor: pointer;
 
   &:hover {

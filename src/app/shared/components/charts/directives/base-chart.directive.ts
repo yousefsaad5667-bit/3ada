@@ -15,7 +15,7 @@ export abstract class BaseChartDirective {
   private destroyRef = inject(DestroyRef);
 
   constructor() {
-    this.destroyRef.onDestroy(() => this.destroy());
+    this.destroyRef.onDestroy(() => { this.destroy(); });
   }
 
   /**

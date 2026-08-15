@@ -82,7 +82,7 @@ $intensity-dark:  (0: #1e1e3a, 1: #2e2e6a, 2: #5b5fc7, 3: #818cf8, 4: #c7d2fe);
   height: 14px;
   border-radius: 2px;
   cursor: default;
-  transition: transform 0.1s;
+  transition: transform var(--transition-fast);
   flex-shrink: 0;
 
   &:hover {

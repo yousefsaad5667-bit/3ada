@@ -6,6 +6,12 @@
   flex-direction: column;
   gap: 2rem;
   direction: rtl;
+  animation: fadeInUp var(--transition-slow)var(--bezier-snappy) forwards;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
 }
 
 .page-header {

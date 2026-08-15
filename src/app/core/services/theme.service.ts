@@ -15,8 +15,24 @@ export class ThemeService {
 
   initialize(): void {
     const storedTheme = this.storage.get<unknown>(STORAGE_KEYS.THEME);
-    const themeToApply: AppTheme = isAppTheme(storedTheme) ? storedTheme : 'dark';
-    this.setTheme(themeToApply);
+    
+    if (isAppTheme(storedTheme)) {
+      this.applyTheme(storedTheme);
+    } else if (window.matchMedia) {
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this.applyTheme(isDark ? 'dark' : 'light');
+    } else {
+      this.applyTheme('dark'); // default fallback
+    }
+
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        const stored = this.storage.get<unknown>(STORAGE_KEYS.THEME);
+        if (!isAppTheme(stored)) {
+          this.applyTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    }
   }
 
   toggleTheme(): void {
@@ -25,8 +41,12 @@ export class ThemeService {
   }
 
   setTheme(theme: AppTheme): void {
-    this._currentTheme.set(theme);
     this.storage.set(STORAGE_KEYS.THEME, theme);
+    this.applyTheme(theme);
+  }
+
+  private applyTheme(theme: AppTheme): void {
+    this._currentTheme.set(theme);
     document.documentElement.setAttribute('data-theme', theme);
   }
 }

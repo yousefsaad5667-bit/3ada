@@ -45,7 +45,7 @@ export function exportAsSvg(
   const blob = new Blob([svgContent], { type: 'image/svg+xml' });
   const url = URL.createObjectURL(blob);
   triggerDownload(url, `${sanitized}.svg`);
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setTimeout(() => { URL.revokeObjectURL(url); }, 1000);
 }
 
 /**
@@ -67,7 +67,7 @@ export function exportAsSvgFromDom(element: HTMLElement, filename: string): void
   const blob = new Blob([svgContent], { type: 'image/svg+xml' });
   const url = URL.createObjectURL(blob);
   triggerDownload(url, `${sanitized}.svg`);
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setTimeout(() => { URL.revokeObjectURL(url); }, 1000);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────

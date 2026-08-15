@@ -9,7 +9,9 @@
     <app-chart-empty-state />
   } @else {
     <div class="area-chart__canvas-wrapper">
-      <canvas #chartCanvas></canvas>
+      <canvas #chartCanvas role="img" [attr.aria-label]="'رسم بياني: ' + titleAr">
+        <p class="sr-only">رسم بياني يعرض {{ titleAr }}</p>
+      </canvas>
     </div>
   }
 

@@ -105,8 +105,8 @@ export class ChartCardComponent {
   titleAr = input<string>('');
 
   /** Emitted when user clicks "تصدير PNG" */
-  exportPng = output<void>();
+  exportPng = output();
 
   /** Emitted when user clicks "تصدير SVG" */
-  exportSvg = output<void>();
+  exportSvg = output();
 }

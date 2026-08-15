@@ -10,8 +10,9 @@
       <div class="sidebar-overlay" (click)="closeSidebar()" aria-hidden="true"></div>
     }
 
-    <main class="content-area">
-      <router-outlet></router-outlet>
+    <main class="content-area" [@routeAnimations]="outlet.isActivated ? outlet.activatedRoute : ''">
+      <router-outlet #outlet="outlet"></router-outlet>
     </main>
+    <app-toast></app-toast>
   </div>
 </div>

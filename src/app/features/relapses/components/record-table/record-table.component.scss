@@ -37,7 +37,7 @@
     &.sortable {
       cursor: pointer;
       user-select: none;
-      transition: background-color 0.2s;
+      transition: background-color var(--transition-normal);
 
       &:hover {
         background-color: var(--color-border);
@@ -51,7 +51,7 @@
   }
 
   tbody tr {
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-normal);
 
     &:hover {
       background-color: var(--color-bg-secondary);
@@ -88,7 +88,7 @@
   font-size: var(--font-size-sm);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--border-radius-sm);
-  transition: all 0.2s;
+  transition: all var(--transition-normal);
   color: var(--color-text-primary);
 
   &:hover {

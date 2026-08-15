@@ -7,7 +7,7 @@
 
 /* Smooth CDK Dialog Animation */
 .cdk-dialog-container {
-  animation: dialog-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: dialog-fade-in var(--transition-normal)cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes dialog-fade-in {
@@ -26,4 +26,64 @@ html {
   direction: rtl;
   color: var(--color-text-primary);
   background: var(--color-bg-primary);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--transition-slow)var(--bezier-snappy) forwards;
+}
+
+/* Accessibility Utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Global focus visibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Minimum touch target size for interactive elements */
+button, 
+a, 
+input, 
+select, 
+textarea,
+[role="button"],
+[role="tab"],
+[role="checkbox"],
+[role="radio"],
+[role="switch"],
+[role="menuitem"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

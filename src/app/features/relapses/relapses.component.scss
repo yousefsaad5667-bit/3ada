@@ -2,6 +2,11 @@
   padding: var(--spacing-lg);
   max-width: 1200px;
   margin: 0 auto;
+  animation: fadeInUp var(--transition-slow)var(--bezier-snappy) forwards;
+
+  @media (max-width: 480px) {
+    padding: var(--spacing-md);
+  }
 }
 
 .page-header {
@@ -9,6 +14,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--spacing-xl);
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
 
   .page-title {
     margin: 0;
@@ -25,7 +37,7 @@
     border: none;
     background-color: var(--primary);
     color: white;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-normal);
 
     &:hover {
       background-color: var(--primary-dark);

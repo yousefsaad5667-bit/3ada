@@ -3,7 +3,13 @@
   flex-direction: column;
   gap: 1.5rem;
   padding: 1rem;
-  direction: rtl; // Arabic layout
+  direction: rtl;
+  animation: fadeInUp var(--transition-slow)var(--bezier-snappy) forwards; // Arabic layout
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
 }
 
 .patterns-dashboard {

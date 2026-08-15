@@ -19,12 +19,20 @@
   background: var(--color-bg-primary);
 }
 
+@keyframes overlay-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .sidebar-overlay {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
   z-index: 90;
+  animation: overlay-fade-in var(--transition-fast) ease-out forwards;
+  touch-action: none; /* Prevent scroll-bleed on mobile */
 }
 
 @media (max-width: 767px) {

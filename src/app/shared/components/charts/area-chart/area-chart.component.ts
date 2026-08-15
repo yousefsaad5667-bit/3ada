@@ -6,8 +6,7 @@ import {
   effect,
   inject,
   input,
-  output,
-, ChangeDetectionStrategy } from '@angular/core';
+  output, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChartData, ChartOptions } from 'chart.js/auto';
 

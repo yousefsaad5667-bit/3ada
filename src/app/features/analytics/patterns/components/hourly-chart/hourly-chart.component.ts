@@ -13,5 +13,5 @@ import { HourBucketView, PatternStatus } from '../../models/pattern-view.model';
 export class HourlyChartComponent {
   @Input({ required: true }) hours: HourBucketView[] = [];
   @Input({ required: true }) status: PatternStatus = 'loading';
-  @Input({ required: true }) skippedCount: number = 0;
+  @Input({ required: true }) skippedCount = 0;
 }

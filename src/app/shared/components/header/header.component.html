@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header-start">
-    <button class="menu-toggle" (click)="sidebarToggle.emit()" aria-label="Toggle Menu">
+    <button class="menu-toggle" (click)="sidebarToggle.emit()" aria-label="تبديل القائمة">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="3" y1="12" x2="21" y2="12"></line>
         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -11,7 +11,7 @@
   </div>
 
   <div class="header-end">
-    <button class="theme-toggle" (click)="onToggleTheme()" aria-label="Toggle Theme">
+    <button class="theme-toggle" (click)="onToggleTheme()" aria-label="تبديل المظهر">
       @if (themeService.currentTheme() === 'dark') {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>

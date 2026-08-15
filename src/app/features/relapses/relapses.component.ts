@@ -80,6 +80,7 @@ export class RelapsesComponent {
 
   isEmpty = computed(() => this.repository.records().length === 0);
   noMatch = computed(() => !this.isEmpty() && this.filteredRecords().length === 0);
+  hasError = this.repository.hasError;
 
   updateSearch(q: string) {
     if (this.searchDebounce) {
