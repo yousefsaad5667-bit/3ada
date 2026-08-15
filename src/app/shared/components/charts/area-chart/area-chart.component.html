@@ -1,0 +1,16 @@
+<app-chart-card
+  [titleAr]="titleAr"
+  (exportPng)="onExportPng()"
+  (exportSvg)="onExportSvg()">
+
+  @if (loading()) {
+    <app-chart-loading-skeleton />
+  } @else if (isEmpty) {
+    <app-chart-empty-state />
+  } @else {
+    <div class="area-chart__canvas-wrapper">
+      <canvas #chartCanvas></canvas>
+    </div>
+  }
+
+</app-chart-card>

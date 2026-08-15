@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.line-chart__canvas-wrapper {
+  position: relative;
+  width: 100%;
+
+  canvas {
+    width: 100% !important;
+    display: block;
+  }
+}

@@ -1,0 +1,47 @@
+<app-chart-card
+  [titleAr]="titleAr"
+  (exportPng)="onExportPng()"
+  (exportSvg)="onExportSvg()">
+
+  @if (loading()) {
+    <app-chart-loading-skeleton />
+  } @else if (isEmpty) {
+    <app-chart-empty-state />
+  } @else {
+    <div class="heatmap-grid"
+         [style.--col-count]="colLabels().length + 1">
+
+      <!-- Corner cell (top-right empty) -->
+      <div class="heatmap-grid__corner"></div>
+
+      <!-- Column labels (top row) -->
+      @for (col of colLabels(); track col) {
+        <div class="heatmap-grid__col-label">{{ col }}</div>
+      }
+
+      <!-- Rows: row-label + cells -->
+      @for (row of rowLabels(); track row) {
+        <div class="heatmap-grid__row-label">{{ row }}</div>
+        @for (col of colLabels(); track col) {
+          <div
+            class="heatmap-grid__cell intensity-{{ getIntensity(row, col) }}"
+            [attr.title]="getTooltip(row, col)"
+            role="gridcell"
+            [attr.aria-label]="getTooltip(row, col)">
+          </div>
+        }
+      }
+
+    </div>
+
+    <!-- Intensity legend -->
+    <div class="heatmap-legend" dir="rtl">
+      <span class="heatmap-legend__label">أقل</span>
+      @for (i of [0,1,2,3,4]; track i) {
+        <div class="heatmap-legend__swatch intensity-{{ i }}"></div>
+      }
+      <span class="heatmap-legend__label">أكثر</span>
+    </div>
+  }
+
+</app-chart-card>

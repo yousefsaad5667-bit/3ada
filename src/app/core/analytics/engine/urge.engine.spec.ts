@@ -1,4 +1,4 @@
-import { getUrgeAnalysis } from './urge.engine';
+import { getUrgeAnalysis, getUrgeByHour, getUrgeByWeekday } from './urge.engine';
 import { RelapseRecord } from '../../models/relapse-record.model';
 
 describe('Urge Engine', () => {
