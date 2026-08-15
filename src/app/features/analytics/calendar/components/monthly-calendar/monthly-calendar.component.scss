@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--text-primary, #24292e);
+  color: var(--color-text-primary, #24292e);
   
   &:hover {
     background-color: var(--bg-hover, #f6f8fa);
@@ -44,7 +44,7 @@
 .weekday-header {
   text-align: center;
   font-size: 0.8rem;
-  color: var(--text-secondary, #666);
+  color: var(--color-text-secondary, #666);
   padding-bottom: 8px;
 }
 
@@ -82,7 +82,7 @@
   }
 
   &.today {
-    border: 2px solid var(--text-primary, #24292e);
+    border: 2px solid var(--color-text-primary, #24292e);
   }
 
   &.selected {
@@ -92,7 +92,7 @@
   }
 
   /* Intensity classes */
-  &.intensity-none { background-color: var(--intensity-none, #ebedf0); color: var(--text-primary, #24292e); }
+  &.intensity-none { background-color: var(--intensity-none, #ebedf0); color: var(--color-text-primary, #24292e); }
   &.intensity-low { background-color: var(--intensity-low, #9be9a8); color: #000; }
   &.intensity-medium { background-color: var(--intensity-medium, #40c463); color: #000; }
   &.intensity-high { background-color: var(--intensity-high, #30a14e); color: #fff; }
@@ -112,15 +112,15 @@
 
 @media (prefers-color-scheme: dark) {
   .day-cell {
-    &.intensity-none { background-color: var(--intensity-none, #161b22); color: var(--text-primary, #c9d1d9); }
+    &.intensity-none { background-color: var(--intensity-none, #161b22); color: var(--color-text-primary, #c9d1d9); }
     &.intensity-low { background-color: var(--intensity-low, #0e4429); color: #fff; }
     &.intensity-medium { background-color: var(--intensity-medium, #006d32); color: #fff; }
     &.intensity-high { background-color: var(--intensity-high, #26a641); color: #fff; }
     &.intensity-very-high { background-color: var(--intensity-very-high, #39d353); color: #fff; }
-    &.today { border-color: var(--text-primary, #c9d1d9); }
+    &.today { border-color: var(--color-text-primary, #c9d1d9); }
   }
   .nav-btn {
-    color: var(--text-primary, #c9d1d9);
+    color: var(--color-text-primary, #c9d1d9);
     border-color: var(--border-color, #30363d);
     &:hover { background-color: var(--bg-hover, #21262d); }
   }

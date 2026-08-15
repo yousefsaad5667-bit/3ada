@@ -11,7 +11,7 @@
   height: 100%;
   min-height: 150px;
   text-align: center;
-  color: var(--text-secondary, #666);
+  color: var(--color-text-secondary, #666);
   font-style: italic;
   padding: 20px;
 }
@@ -25,7 +25,7 @@
 .summary-title {
   margin: 0;
   font-size: 1.1rem;
-  color: var(--text-primary, #24292e);
+  color: var(--color-text-primary, #24292e);
 }
 
 .summary-content {
@@ -51,12 +51,12 @@
 .stat-value {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-primary, #24292e);
+  color: var(--color-text-primary, #24292e);
 }
 
 .stat-label {
   font-size: 0.8rem;
-  color: var(--text-secondary, #666);
+  color: var(--color-text-secondary, #666);
 }
 
 .empty-day-text {
@@ -69,7 +69,7 @@
   h4 {
     margin: 0 0 8px 0;
     font-size: 0.9rem;
-    color: var(--text-secondary, #666);
+    color: var(--color-text-secondary, #666);
   }
 }
 
@@ -85,14 +85,14 @@
   border-radius: 12px;
   padding: 2px 10px;
   font-size: 0.8rem;
-  color: var(--text-primary, #24292e);
+  color: var(--color-text-primary, #24292e);
 }
 
 .notes-list {
   margin: 0;
   padding-right: 16px;
   font-size: 0.9rem;
-  color: var(--text-primary, #24292e);
+  color: var(--color-text-primary, #24292e);
   
   li {
     margin-bottom: 4px;
@@ -101,10 +101,10 @@
 
 @media (prefers-color-scheme: dark) {
   .summary-title, .stat-value, .tag, .notes-list {
-    color: var(--text-primary, #c9d1d9);
+    color: var(--color-text-primary, #c9d1d9);
   }
   .stat-label, .prompt-state, .summary-section h4 {
-    color: var(--text-secondary, #8b949e);
+    color: var(--color-text-secondary, #8b949e);
   }
   .summary-header {
     border-bottom-color: var(--border-color, #30363d);

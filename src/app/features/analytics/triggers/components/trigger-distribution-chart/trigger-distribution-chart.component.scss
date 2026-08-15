@@ -12,7 +12,7 @@
   .chart-title {
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--text-primary, #111827);
+    color: var(--color-text-primary, #111827);
     margin: 0;
   }
 }
@@ -49,12 +49,12 @@
 
 .keyword-label {
   font-weight: 600;
-  color: var(--text-primary, #111827);
+  color: var(--color-text-primary, #111827);
 }
 
 .count-value {
   font-weight: 500;
-  color: var(--text-secondary, #4b5563);
+  color: var(--color-text-secondary, #4b5563);
 }
 
 .bar-track {
@@ -81,18 +81,18 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  color: var(--text-muted, #9ca3af);
+  color: var(--color-text-muted, #9ca3af);
   font-size: 0.875rem;
 }
 
 @media (prefers-color-scheme: dark) {
   .chart-title,
   .keyword-label {
-    color: var(--text-primary-dark, #f9fafb);
+    color: var(--color-text-primary-dark, #f9fafb);
   }
 
   .count-value {
-    color: var(--text-secondary-dark, #d1d5db);
+    color: var(--color-text-secondary-dark, #d1d5db);
   }
 
   .bar-row--other {

@@ -20,7 +20,7 @@ import { Component, Input, Output, EventEmitter , ChangeDetectionStrategy } from
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1.25rem;
-      background-color: var(--surface-color, #ffffff);
+      background-color: var(--color-bg-card);
       border: 1px dashed var(--border-color, #e0e0e0);
       border-radius: var(--border-radius-lg, 12px);
       color: var(--text-secondary, #666666);
@@ -45,7 +45,7 @@ import { Component, Input, Output, EventEmitter , ChangeDetectionStrategy } from
       }
     }
     [data-theme='dark'] .placeholder-tile {
-      background-color: var(--surface-color-dark, #1e1e1e);
+      background-color: var(--color-bg-card);
       border-color: var(--border-color-dark, #333333);
       color: var(--text-secondary-dark, #aaaaaa);
     }

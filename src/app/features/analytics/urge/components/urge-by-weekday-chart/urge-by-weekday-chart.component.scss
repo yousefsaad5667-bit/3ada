@@ -14,7 +14,7 @@
     margin: 0;
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--text-color, #333333);
+    color: var(--color-text-primary, #333333);
   }
 }
 
@@ -49,7 +49,7 @@
 .day-label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-color, #374151);
+  color: var(--color-text-primary, #374151);
 }
 
 .bar-area {
@@ -61,7 +61,7 @@
 
   .bar-fill {
     height: 100%;
-    background: var(--text-color-secondary, #9ca3af);
+    background: var(--color-text-secondary, #9ca3af);
     border-radius: 9999px;
     transition: width var(--transition-normal);
   }
@@ -76,7 +76,7 @@
   .avg-value {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--text-color, #374151);
+    color: var(--color-text-primary, #374151);
   }
 
   .highest-badge {
@@ -90,14 +90,14 @@
 
   .no-data-label {
     font-size: 0.875rem;
-    color: var(--text-color-secondary, #9ca3af);
+    color: var(--color-text-secondary, #9ca3af);
   }
 }
 
 .empty-state {
   padding: 2rem;
   text-align: center;
-  color: var(--text-color-secondary, #6b7280);
+  color: var(--color-text-secondary, #6b7280);
   background: var(--surface-ground, #fafafa);
   border-radius: var(--border-radius-md, 8px);
 }

@@ -8,7 +8,7 @@
   margin: 0 0 1.5rem 0;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-primary, #111827);
+  color: var(--color-text-primary, #111827);
 }
 
 .card-content {
@@ -60,13 +60,13 @@
 
 .insight-label {
   font-size: 0.875rem;
-  color: var(--text-secondary, #6b7280);
+  color: var(--color-text-secondary, #6b7280);
 }
 
 .insight-value {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-primary, #111827);
+  color: var(--color-text-primary, #111827);
 }
 
 .empty-placeholder {
@@ -74,14 +74,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted, #9ca3af);
+  color: var(--color-text-muted, #9ca3af);
   font-size: 0.875rem;
 }
 
 @media (prefers-color-scheme: dark) {
-  .chart-title { color: var(--text-primary-dark, #f9fafb); }
-  .insight-label { color: var(--text-secondary-dark, #9ca3af); }
-  .insight-value { color: var(--text-primary-dark, #f9fafb); }
+  .chart-title { color: var(--color-text-primary-dark, #f9fafb); }
+  .insight-label { color: var(--color-text-secondary-dark, #9ca3af); }
+  .insight-value { color: var(--color-text-primary-dark, #f9fafb); }
   
   .insight-icon.peak-icon {
     background-color: rgba(37, 99, 235, 0.2);

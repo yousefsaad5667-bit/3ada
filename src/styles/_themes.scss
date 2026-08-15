@@ -9,6 +9,10 @@
   --color-border: #334155;
   --color-warning-bg: #78350f;
   --color-warning-text: #fbbf24;
+  --color-elapse-indicator: #f59e0b;
+  --color-surface: var(--color-bg-card);
+  --color-text-muted: var(--color-text-secondary);
+  --color-bg-surface-secondary: var(--color-bg-secondary);
 
   /* Calendar Heatmap Intensity Colors (Dark) */
   --intensity-none: #161b22;
@@ -29,6 +33,10 @@
   --color-border: #e2e8f0;
   --color-warning-bg: #fef3c7;
   --color-warning-text: #92400e;
+  --color-elapse-indicator: #f59e0b;
+  --color-surface: var(--color-bg-card);
+  --color-text-muted: var(--color-text-secondary);
+  --color-bg-surface-secondary: var(--color-bg-secondary);
 
   /* Calendar Heatmap Intensity Colors (Light) */
   --intensity-none: #ebedf0;
@@ -50,6 +58,10 @@
     --color-border: #e2e8f0;
     --color-warning-bg: #fef3c7;
     --color-warning-text: #92400e;
+    --color-elapse-indicator: #f59e0b;
+    --color-surface: var(--color-bg-card);
+    --color-text-muted: var(--color-text-secondary);
+    --color-bg-surface-secondary: var(--color-bg-secondary);
 
     /* Calendar Heatmap Intensity Colors (Light) */
     --intensity-none: #ebedf0;

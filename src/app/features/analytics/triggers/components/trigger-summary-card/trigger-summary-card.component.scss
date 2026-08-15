@@ -12,7 +12,7 @@
   .card-title {
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--text-primary, #111827);
+    color: var(--color-text-primary, #111827);
     margin: 0;
   }
 }
@@ -89,13 +89,13 @@
 .tile-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--text-muted, #6b7280);
+  color: var(--color-text-muted, #6b7280);
 }
 
 .tile-value {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--text-primary, #111827);
+  color: var(--color-text-primary, #111827);
   word-break: break-word;
 
   &--danger {
@@ -105,7 +105,7 @@
 
 .tile-subtext {
   font-size: 0.75rem;
-  color: var(--text-secondary, #4b5563);
+  color: var(--color-text-secondary, #4b5563);
 }
 
 .footnote-alert {
@@ -122,14 +122,14 @@
   justify-content: center;
   align-items: center;
   padding: 2.5rem;
-  color: var(--text-muted, #9ca3af);
+  color: var(--color-text-muted, #9ca3af);
   font-size: 0.875rem;
 }
 
 @media (prefers-color-scheme: dark) {
   .card-title,
   .tile-value {
-    color: var(--text-primary-dark, #f9fafb);
+    color: var(--color-text-primary-dark, #f9fafb);
   }
 
   .tile-value--danger {
@@ -142,7 +142,7 @@
   }
 
   .tile-subtext {
-    color: var(--text-secondary-dark, #d1d5db);
+    color: var(--color-text-secondary-dark, #d1d5db);
   }
 
   .tile-icon {

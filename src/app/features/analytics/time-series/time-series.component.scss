@@ -18,12 +18,12 @@
     h1 {
       margin: 0;
       font-size: 1.75rem;
-      color: var(--text-color, #0f172a);
+      color: var(--color-text-primary, #0f172a);
     }
 
     p {
       margin: 0.25rem 0 0;
-      color: var(--text-muted, #64748b);
+      color: var(--color-text-muted, #64748b);
       font-size: 0.875rem;
     }
   }
@@ -52,7 +52,7 @@
   .card-title {
     margin: 0 0 1rem;
     font-size: 1.125rem;
-    color: var(--text-color, #1e293b);
+    color: var(--color-text-primary, #1e293b);
     border-bottom: 1px solid var(--border-color, #e2e8f0);
     padding-bottom: 0.5rem;
   }
