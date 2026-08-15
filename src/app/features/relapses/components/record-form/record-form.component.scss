@@ -63,8 +63,8 @@
     font-family: inherit;
     font-size: var(--font-size-md);
     transition:
-      border-color 0.2s,
-      box-shadow 0.2s;
+      border-color var(--transition-normal),
+      box-shadow var(--transition-normal);
 
     &:focus {
       outline: none;
@@ -109,7 +109,7 @@
     font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-normal);
 
     &-secondary {
       background-color: transparent;

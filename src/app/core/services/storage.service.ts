@@ -1,5 +1,6 @@
-import { Injectable, signal, Signal } from '@angular/core';
+import { Injectable, signal, Signal, inject, ErrorHandler } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { AppErrorHandler } from '../errors/app-error-handler';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,8 @@ import { environment } from '../../../environments/environment';
 export class StorageService {
   private readonly _isAvailable = signal<boolean>(false);
   readonly isAvailable: Signal<boolean> = this._isAvailable.asReadonly();
+  
+  private readonly errorHandler = inject(ErrorHandler) as AppErrorHandler;
 
   constructor() {
     this._isAvailable.set(this.checkAvailability());
@@ -35,8 +38,9 @@ export class StorageService {
     try {
       const item = localStorage.getItem(this.getKey(key));
       return item ? (JSON.parse(item) as T) : null;
-    } catch {
-      console.error('Error reading from localStorage');
+    } catch (error) {
+      console.error('Error reading from localStorage', error);
+      this.errorHandler.handleStorageCorruption?.();
       return null;
     }
   }

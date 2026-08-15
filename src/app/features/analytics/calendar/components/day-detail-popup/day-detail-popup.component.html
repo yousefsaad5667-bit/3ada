@@ -1,6 +1,6 @@
 @if (isOpen() && detail()) {
   <div class="popup-backdrop" (click)="onBackdropClick($event)">
-    <div class="popup-content" role="dialog" aria-modal="true" dir="rtl">
+    <div class="popup-content" role="dialog" aria-modal="true" dir="rtl" cdkTrapFocus cdkTrapFocusAutoCapture>
       <div class="popup-header">
         <h2 class="popup-title">{{ detail()!.labelAr }}</h2>
         <button class="close-btn" (click)="onClose()" aria-label="إغلاق">&times;</button>

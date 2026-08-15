@@ -2,6 +2,8 @@
   padding: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  direction: rtl;
+  animation: fadeInUp var(--transition-slow)var(--bezier-snappy) forwards;
 }
 
 .page-header {
@@ -68,5 +70,14 @@
     .controls-section {
       align-self: center;
     }
+  }
+}
+
+@media (max-width: 480px) {
+  .analytics-page {
+    padding: 1rem;
+  }
+  .page-header {
+    margin-bottom: 1rem;
   }
 }

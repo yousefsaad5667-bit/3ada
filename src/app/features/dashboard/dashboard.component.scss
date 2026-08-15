@@ -3,6 +3,11 @@
   padding: 1.5rem;
   max-width: 1440px;
   margin: 0 auto;
+  animation: fadeInUp var(--transition-slow)var(--bezier-snappy) forwards;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 }
 
 .dashboard-header {

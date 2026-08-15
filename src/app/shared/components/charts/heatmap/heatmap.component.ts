@@ -5,8 +5,7 @@ import {
   inject,
   input,
   output,
-  signal,
-, ChangeDetectionStrategy } from '@angular/core';
+  signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeatmapCell, ChartConfig, ChartExportRequest } from '../models/chart.models';

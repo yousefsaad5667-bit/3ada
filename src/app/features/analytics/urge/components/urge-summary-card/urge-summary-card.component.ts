@@ -12,7 +12,7 @@ import { UrgeSummaryView } from '../../models/urge-view.model';
 })
 export class UrgeSummaryCardComponent {
   @Input({ required: true }) summary!: UrgeSummaryView;
-  @Input() excludedCount: number = 0;
+  @Input() excludedCount = 0;
 
   get trendLabel(): string {
     switch (this.summary.trendDirection) {

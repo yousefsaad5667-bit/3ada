@@ -1,1 +1,5 @@
-<app-shell></app-shell>
+@if (errorHandler.hasCriticalError()) {
+  <app-error-page></app-error-page>
+} @else {
+  <app-shell></app-shell>
+}

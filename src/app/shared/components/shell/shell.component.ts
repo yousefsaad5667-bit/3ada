@@ -4,15 +4,18 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { StorageWarningComponent } from '../storage-warning/storage-warning.component';
+import { ToastComponent } from '../toast/toast.component';
 import { AppRoute } from '../../../core/models/app-route.model';
 import { APP_ROUTES } from '../../../core/constants/routes.constants';
+import { routeAnimations } from '../../animations/route-animations';
 
 @Component({
   selector: 'app-shell',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, SidebarComponent, StorageWarningComponent],
+  imports: [CommonModule, RouterModule, HeaderComponent, SidebarComponent, StorageWarningComponent, ToastComponent],
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
+  animations: [routeAnimations]
 })
 export class ShellComponent {
   readonly isSidebarOpen = signal<boolean>(false);

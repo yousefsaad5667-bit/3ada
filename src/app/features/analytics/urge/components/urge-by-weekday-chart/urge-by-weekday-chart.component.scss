@@ -63,7 +63,7 @@
     height: 100%;
     background: var(--text-color-secondary, #9ca3af);
     border-radius: 9999px;
-    transition: width 0.3s ease;
+    transition: width var(--transition-normal);
   }
 }
 

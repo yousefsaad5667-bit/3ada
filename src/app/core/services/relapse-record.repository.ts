@@ -13,6 +13,8 @@ export class RelapseRecordRepository {
 
   private readonly _records = signal<RelapseRecord[]>([]);
   readonly records: Signal<RelapseRecord[]> = this._records.asReadonly();
+  
+  public readonly hasError = signal<boolean>(false);
 
   constructor() {
     this._reload();
@@ -22,9 +24,11 @@ export class RelapseRecordRepository {
     try {
       const data = this.storage.get<RelapseRecord[]>(STORAGE_KEYS.RELAPSE_RECORDS);
       this._records.set(Array.isArray(data) ? data : []);
+      this.hasError.set(false);
     } catch {
       console.warn('Recovered from corrupted relapse records data');
       this._records.set([]);
+      this.hasError.set(true);
     }
   }
 

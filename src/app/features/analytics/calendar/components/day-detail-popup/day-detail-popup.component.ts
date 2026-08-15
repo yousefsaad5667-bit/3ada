@@ -1,11 +1,12 @@
 import { Component, computed, inject, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { A11yModule } from '@angular/cdk/a11y';
 import { CalendarAnalyticsService } from '../../services/calendar-analytics.service';
 
 @Component({
   selector: 'app-day-detail-popup',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, A11yModule],
   templateUrl: './day-detail-popup.component.html',
   styleUrl: './day-detail-popup.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

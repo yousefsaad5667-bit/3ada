@@ -36,7 +36,7 @@
     font-size: 0.875rem;
     cursor: pointer;
     color: var(--text-muted, #64748b);
-    transition: all 0.2s;
+    transition: all var(--transition-normal);
 
     &.active {
       background: var(--bg-surface, #ffffff);

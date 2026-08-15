@@ -4,8 +4,7 @@ import {
   ElementRef,
   inject,
   input,
-  output,
-, ChangeDetectionStrategy } from '@angular/core';
+  output, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeatmapCell, ChartConfig, ChartExportRequest } from '../models/chart.models';

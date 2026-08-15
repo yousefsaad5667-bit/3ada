@@ -36,7 +36,7 @@ export class DashboardCardShellComponent implements OnInit {
             this.state.set(stateFn());
           }
        }, { injector: this.injector, manualCleanup: true });
-       this.destroyRef.onDestroy(() => eff.destroy());
+       this.destroyRef.onDestroy(() => { eff.destroy(); });
     } else {
        // Fallback for components that don't implement the contract
        this.state.set('data');

@@ -56,7 +56,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--intensity-none, #ebedf0);
-  transition: transform 0.1s;
+  transition: transform var(--transition-fast);
   min-height: 48px;
   
   .day-number {
