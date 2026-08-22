@@ -44,3 +44,6 @@ build/
 .env*
 *.tmp
 *.swp
+.wrangler/
+node_modules/
+
