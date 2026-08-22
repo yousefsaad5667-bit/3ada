@@ -165,4 +165,14 @@ Each implementation phase should include:
 * Validation
 * Clear separation between UI and business logic
 
+---
 
+## Production Readiness
+
+Every implementation phase MUST be production-ready and deployment-safe by default to prevent CI/CD failures.
+
+Requirements:
+* **Dependency Sync**: Any changes to `package.json` must be immediately followed by `npm install` to regenerate `package-lock.json` and ensure it is committed. `npm ci` must never fail due to lockfile desync.
+* **Valid Configurations**: Configuration files (e.g., `wrangler.toml`, `angular.json`) must contain valid production structures. Do not use local-only hacks or invalid placeholders (e.g., fake UUIDs) that will break production builds.
+* **Platform Alignment**: Directory structures and build outputs must natively align with the target hosting platform (e.g., Cloudflare Pages `functions/` directory convention) rather than abstract architectures that require post-build wrestling.
+* **Deployment Testing**: Deployment scripts and build pipelines must be tested or validated locally before considering a feature complete.
