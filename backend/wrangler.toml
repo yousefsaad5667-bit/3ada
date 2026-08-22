@@ -1,0 +1,19 @@
+name = "habit-tracker-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Expected terminal output on `npm run dev`:
+# ...
+# Ready on http://localhost:8787
+
+[[d1_databases]]
+binding = "DB"
+database_name = "habit-tracker-db"
+database_id = "local-dev"
+
+[vars]
+ALLOWED_ORIGIN = "http://localhost:4200"
+
+[env.production]
+[env.production.vars]
+ALLOWED_ORIGIN = "https://PLACEHOLDER.pages.dev"
