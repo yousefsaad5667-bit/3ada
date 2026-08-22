@@ -13,6 +13,7 @@ database_id = "local-dev"
 
 [vars]
 ALLOWED_ORIGIN = "http://localhost:4200"
+JWT_SECRET = "super-secret-local-dev-key-1234567890"
 
 [env.production]
 [env.production.vars]

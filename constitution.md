@@ -176,3 +176,11 @@ Requirements:
 * **Valid Configurations**: Configuration files (e.g., `wrangler.toml`, `angular.json`) must contain valid production structures. Do not use local-only hacks or invalid placeholders (e.g., fake UUIDs) that will break production builds.
 * **Platform Alignment**: Directory structures and build outputs must natively align with the target hosting platform (e.g., Cloudflare Pages `functions/` directory convention) rather than abstract architectures that require post-build wrestling.
 * **Deployment Testing**: Deployment scripts and build pipelines must be tested or validated locally before considering a feature complete.
+
+---
+
+## API Documentation
+
+* All backend endpoints MUST use @hono/zod-openapi to automatically generate an OpenAPI specification.
+* The Swagger documentation must be kept up to date for any created or modified endpoints.
+
