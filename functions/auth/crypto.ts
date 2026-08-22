@@ -14,7 +14,7 @@ export async function hashPassword(password: string): Promise<string> {
   );
   
   // 3. Derive bits
-  const iterations = 210000;
+  const iterations = 100000;
   const hashBuffer = await crypto.subtle.deriveBits(
     {
       name: 'PBKDF2',
