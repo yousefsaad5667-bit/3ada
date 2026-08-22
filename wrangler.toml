@@ -17,3 +17,8 @@ ALLOWED_ORIGIN = "http://localhost:4200"
 [env.production]
 [env.production.vars]
 ALLOWED_ORIGIN = "https://PLACEHOLDER.pages.dev"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "habit-tracker-db"
+database_id = "local-dev"
