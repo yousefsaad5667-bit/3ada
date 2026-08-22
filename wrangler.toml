@@ -9,10 +9,11 @@ compatibility_date = "2024-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "habit-tracker-db"
-database_id = "local-dev"
+database_id = "e30cc489-20bc-4234-8ae7-d2b088111c26"
 
 [vars]
 ALLOWED_ORIGIN = "http://localhost:4200"
+JWT_SECRET = "super-secret-local-dev-key-1234567890"
 
 [env.production]
 [env.production.vars]

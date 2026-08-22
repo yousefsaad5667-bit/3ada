@@ -129,6 +129,10 @@ Every phase MUST include:
 - Proper error handling
 - No duplicated logic
 
+## API Documentation
+- All backend endpoints MUST use `@hono/zod-openapi` to automatically generate an OpenAPI specification.
+- The Swagger documentation must be kept up to date for any created or modified endpoints.
+
 ## Deliverable Expectations
 Each implementation phase MUST deliver:
 - Folder structure
