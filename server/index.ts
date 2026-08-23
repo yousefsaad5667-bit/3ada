@@ -6,6 +6,7 @@ import { loggerMiddleware } from './middleware/logger';
 
 import { authRouter } from './auth/router';
 import { authMiddleware } from './auth/middleware';
+import { recordsRouter } from './records/router';
 
 const app = new OpenAPIHono<{ Bindings: Env }>().basePath('/api');
 
@@ -13,6 +14,7 @@ app.use('*', (c, next) => corsMiddleware(c.env.ALLOWED_ORIGIN)(c, next));
 app.use('*', loggerMiddleware);
 
 app.route('/auth', authRouter);
+app.route('/records', recordsRouter);
 
 app.get('/health', (c) => c.json({ status: 'ok' }));
 
