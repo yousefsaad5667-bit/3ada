@@ -1,1 +1,3 @@
-﻿{"feature_directory":"specs/016-auth-endpoints"}
+﻿{
+  "feature_directory": "specs/017-records-crud"
+}
